@@ -3,17 +3,17 @@ The Cornererstone API
 
 Schema:
 
-- [Parameters](The-Cornerstone-API#parameters)
-- [Authenication](The-Cornerstone-API#authentication)
-- [HTTP Verbs](The-Cornerstone-API#http-verbs)
-- [Errors](The-Cornerstone-API#errors)
+- [Parameters](#parameters)
+- [Authenication](#authentication)
+- [HTTP Verbs](#http-verbs)
+- [Errors](#errors)
 
 Usage:
 
-- [API Version](The-Cornerstone-API#api-version)
-- [Transactions](The-Cornerstone-API#transactions)
-- [Merchant Application Status](The-Cornerstone-API#merchant-application-status)
-- [Clients](The-Cornerstone-API#Clients)
+- [API Version](#api-version)
+- [Transactions](#transactions)
+- [Merchant Application Status](#merchant-application-status)
+- [Clients](#Clients)
 
 # Schema 
 
