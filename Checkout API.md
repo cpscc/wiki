@@ -1,0 +1,195 @@
+h1. Solidstone Checkout API
+
+*Note:* The Solidstone page used as an example in this document will be @Machine_Shop@. Requests are usually HTTP POST requests, although on occasion GET elements are included.
+
+h1. Simple VS. "Complex" Requests
+
+There are two main types of checkouts Solidstone supports — simple, and complex. The difference between these is that simple requests contain only one cart item (@oneitem@), and complex ones may have many items, and the cart is built before the checkout, instead of as a part of it.
+
+h1. Pieces of a request
+
+Normally, a request is made in two stages. *Stage 1* creates a single item in the cart, which contains the amount for the transaction and other important details. *Stage 2* is a checkout page where the customers details are input. It is possible to do all of these in a single stage, or move the @memo@ into stage 2.
+
+Please note that even though Stage 1 of a request is often included on a merchant's website, Stage 2 (the checkout form) should nearly always be kept on our servers, as this simplifies notification of any errors to the user, and reduces confusion about any changes that might happen in the form between sites.
+
+h2. Stage 1
+
+|_. Name    |_. Description |_. Required? |
+| name      | Name of the cart item. Right now this means very little to a simple request. | Required |
+| amount    | US Dollar amount for the transaction | Required |
+| merchant  | Merchant name | Only required if different than the merchant/site name given in the URL |
+| recurring | Can be @once@, @weekly@, @monthly@, @quarterly@, and @yearly@ | |
+| startdate | A date in the format @mm/dd/yyyy@. If the day is higher than 30 it is changed to 30. | |
+| type      | Transaction type. Not used for simple transactions. | |
+| oneitem   | @true@ / @false@ — Denotes whether a checkout is simple or not. | Required for simple requests |
+| memo      | Can be either a simple string, or one or more custom fields. | |
+| copy_to   | A comma or space separated list of email addresses to CC on the merchant receipt | |
+| fee       | A special field allowing a fee to be added. See 'Fee' under 'Usage' below. | |
+| items[]   | @items[]@ can be used as many times as you would like for a simple shopping cart ||
+| display_login | Set this to show logins on simple checkouts ||
+
+h2. Stage 2
+
+h3. Customer details
+
+|_. Name              |_. Description |_. Required? |
+| checkout            | | Required if combining 1st and second stage |
+| customer[firstname] | | Required |
+| customer[lastname]  | | Required |
+| customer[email]     | | Required |
+| customer[address]   | | |
+| customer[company]   | Usually used for address line 2 | |
+| customer[city]      | | |
+| customer[state]     | | |
+| customer[zip]       | | |
+| customer[country]   | | |
+| customer[phone]     | | |
+| customer[comment]   | This field is used for the customer's comment ||
+
+h3. Payment details
+
+There are three payment methods allowed. @mailacheck@ is a special type of transaction that doesn't actually run anything. Instead, the customer is only emailed an invoice before payment is due. Use of this method is discouraged.
+
+|_. Name  |_. Description |_. Required? |
+|_\3. Set payment type |
+| payment | Can be @card@, @check@, or @mailacheck@ | Required if a check or mailacheck transaction |
+|_\3. EFT / E-check |
+| check[aba] | 9 digits | If EFT |
+| check[account] || If EFT |
+| check[type] | Must be @savings@, @checking@, @bsave@ or @bcheck@ | If EFT |
+|_\3. Credit card |
+| card[number] | 15-16 digits | If CC |
+| card[expmonth] | 2 digits | If CC |
+| card[expyear] | 2 digits | If CC |
+| card[cvv] | 3-4 digits | If CC |
+
+h1. Usage
+
+h2. A Basic Request
+
+We have Mike running a Machine Shop who needs a basic online bill pay for his customers. Here is some code to put on his website to get him going:
+
+<pre><code><form method=post action=https://checkout.cornerstone.cc/Machine_Shop/checkout>
+    <input type=hidden name=name value="Online Bill Pay">
+    <input type=hidden name=merchant value=Machine_Shop>
+    <input type=hidden name=oneitem value=true>
+    <label> Now Paying <input name=amount placeholder=$00.00 required></label>
+    <button type=submit>Pay Now</button>
+</form>
+</code></pre>
+
+But Mike also needs some other functionality to make this really work for him.
+
+h2. Custom Fields (via @memo@)
+
+The @memo@ can work in two ways:
+
+# It can be used to contain any string of text you want that needs to come along with the transaction — i.e. @<input type=hidden name=memo value="Made with the online bill pay">@
+# It can be used to retrieve multiple custom fields — @<input name=memo[Shoe Size]><input name=memo[Shoe Color]>@
+
+This can be used to hold any number of things:
+
+* Sizes, colors, or other details for an item
+* Customer name, customer ID, or invoice numbers
+* It can also be used a simple way to hold a multiple items (outside of our cart system) — i.e. @memo[Item 1]@,  @memo[Item 2]@ and so on.
+
+The Machine Shop needs an Invoice Number and Description:
+
+<pre><code><label> Invoice Number: <input name="memo[Invoice No.]"> </label>
+<label> Description: <input name="memo[Description]"> </label></code></pre>
+
+Added to our last example:
+
+<pre><code><form method=post action=https://checkout.cornerstone.cc/Machine_Shop/checkout>
+    <input type=hidden name=name value="Online Bill Pay">
+    <input type=hidden name=merchant value=Machine_Shop>
+    <input type=hidden name=oneitem value=true>
+    <label> Now Paying <input name=amount placeholder=$00.00 required></label>
+    <label> Invoice Number: <input name="memo[Invoice No.]"> </label>
+    <label> Description: <input name="memo[Description]"> </label>
+    <button type=submit>Pay Now</button>
+</form></code></pre>
+
+It's also possible to make a series with the same name by adding @[]@ brackets to the end:
+
+<pre><code><input type="checkbox" name="memo[Support for][]" value="Emergency Services">
+<input type="checkbox" name="memo[Support for][]" value="Addiction Treatment/Recovery Programs">
+<input type="checkbox" name="memo[Support for][]" value="Family Housing">
+<input type="checkbox" name="memo[Support for][]" value="Area of Greatest Need"></code></pre>
+
+h3. Magic Designations
+
+A @memo[To]@ field can be used for designations, and will show in the dashboard as a transaction's category.
+
+h2. Recurring Transaction (via @recurring@)
+
+Mike has some serialized work he does in his Machine Shop for agreed amounts. So he also needs a recurring option. The recommended way to do this is by adding a @select@ (drop down) element:
+
+<pre><code>Frequency: 
+<select name=recurring>
+    <option value=false>Just this once</option>
+    <option value=weekly>Weekly</option>
+    <option value=monthly>Monthly</option>
+    <option value=quarterly>Quarterly</option>
+    <option value=yearly>Yearly</option>
+</select></code></pre>
+
+Or with a checkbox:
+
+<pre><code><label><input type=checkbox name=recurring value=monthly> Make this a monthly payment.</label></code></pre>
+
+h2. Scheduling a transaction in the future
+
+This can be done with a @start-date@. This accepts a date like @12/31/2000@
+
+<pre><code><input name=start-date></code></pre>
+
+h2. Carbon Copying the Merchant Receipts (via @copy_to@)
+
+If you have multiple forms (such as registration forms) that need to go to several people, and it would be cumbersome to have all receipts sent to these email addresses (globally for your checkout page), you can use @copy_to@.
+
+<pre><code><input type=hidden name=copy_to value="brian@example.com, nate@example.com"></code></pre>
+
+Be aware that this may open the email addresses to view from bots or anyone who views the source. If this is a problem for you, then have the email addresses set globally for your checkout page.
+
+h2. Fee
+
+Sometimes you may want to add a fee. At present, one fee is possible on stage 1. Below is a drop down that allows a user to select a transaction type, which then adds the fee to the checkout page, updating the total, and appending a subtotal and fee amount to the memo.
+
+<pre><code>Transaction type:
+<select name=fee>
+    <option value="Transaction Fee: 3%">MasterCard or Discover</option>
+    <option value="Transaction Fee: 4%">American Express</option>
+    <option value="Transaction Fee: $3.95">Visa</option>
+    <option value="Transaction Fee: $2.95">E-Check / ACH</option>
+</select></code></pre>
+
+If the user selected an amount of $50 dollars, using a Discover or MasterCard, the memo on the next page would look much like the following:
+
+<pre><code>Subtotal: $50.00 
+Transaction Fee: $1.50 </code></pre>
+
+You can use this with radio buttons, checkboxes, or a hidden input (which you can set with Javascript or JQuery).
+
+
+h2. Simple Cart (via @items@)
+
+Simple carts can be made using an @items[]@ input:
+
+<pre><code><input type=checkbox name=items[] value="Logo T-shirt (sm): $15"></code>
+<input type=checkbox name=items[] value="Logo T-shirt (lg): $16"></code></pre>
+
+Which would yield a memo along these lines:
+
+<pre><code>Logo T-shirt (sm): $15
+Logo T-shirt (lg): $16</code></pre>
+
+With a total altogether of $31.
+
+h3. Alternate
+
+You could alternatively use multiple @name@ and @amount@ inputs, like so:
+
+<pre><code><input name=name[0] value="Logo T-shirt (sm)"> <input name=amount[0] value="$15">
+<input name=name[1] value="Logo T-shirt (lg)"> <input name=amount[1] value="$16">
+</code></pre>
