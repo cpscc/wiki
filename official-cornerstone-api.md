@@ -12,8 +12,8 @@ Usage:
 
 - [API Version](#api-version)
 - [Transactions](#transactions)
-- [Merchant Application Status](#merchant-application-status)
-- [Clients](#Clients)
+- [Merchant Application Status](#merchant-applications-status)
+- [Clients](#clients)
 
 # Schema 
 
