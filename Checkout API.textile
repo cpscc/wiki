@@ -2,17 +2,17 @@ h1. Solidstone Checkout API
 
 *Note:* The Solidstone page used as an example in this document will be @Machine_Shop@. Requests are usually HTTP POST requests, although on occasion GET elements are included.
 
-h1. Simple VS. "Complex" Requests
+h2. Simple VS. "Complex" Requests
 
 There are two main types of checkouts Solidstone supports — simple, and complex. The difference between these is that simple requests contain only one cart item (@oneitem@), and complex ones may have many items, and the cart is built before the checkout, instead of as a part of it.
 
-h1. Pieces of a request
+h2. Pieces of a request
 
 Normally, a request is made in two stages. *Stage 1* creates a single item in the cart, which contains the amount for the transaction and other important details. *Stage 2* is a checkout page where the customers details are input. It is possible to do all of these in a single stage, or move the @memo@ into stage 2.
 
 Please note that even though Stage 1 of a request is often included on a merchant's website, Stage 2 (the checkout form) should nearly always be kept on our servers, as this simplifies notification of any errors to the user, and reduces confusion about any changes that might happen in the form between sites.
 
-h2. Stage 1
+h3. Stage 1
 
 |_. Name    |_. Description |_. Required? |
 | name      | Name of the cart item. Right now this means very little to a simple request. | Required |
@@ -28,9 +28,9 @@ h2. Stage 1
 | items[]   | @items[]@ can be used as many times as you would like for a simple shopping cart ||
 | display_login | Set this to show logins on simple checkouts ||
 
-h2. Stage 2
+h3. Stage 2
 
-h3. Customer details
+h4. Customer details
 
 |_. Name              |_. Description |_. Required? |
 | checkout            | | Required if combining 1st and second stage |
@@ -46,7 +46,7 @@ h3. Customer details
 | customer[phone]     | | |
 | customer[comment]   | This field is used for the customer's comment ||
 
-h3. Payment details
+h4. Payment details
 
 There are three payment methods allowed. @mailacheck@ is a special type of transaction that doesn't actually run anything. Instead, the customer is only emailed an invoice before payment is due. Use of this method is discouraged.
 
