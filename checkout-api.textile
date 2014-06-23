@@ -1,5 +1,9 @@
 h1. Solidstone Checkout API
 
+*Contents*
+
+# "Basic Requusts":#a-basic-request
+
 *Note:* The Solidstone page used as an example in this document will be @Machine_Shop@. Requests are usually HTTP POST requests, although on occasion GET elements are included.
 
 h2. Simple VS. "Complex" Requests
