@@ -2,7 +2,13 @@ h1. Solidstone Checkout API
 
 *Contents*
 
+# "Overview":#pieces-of-a-request
 # "Basic Requusts":#a-basic-request
+# "Custom Fields":#custom-fields-via-memo
+# "Recurring/scheduled transactions":#recurring-transaction-via-recurring
+# "Carbon Copy Merchants":#carbon-copying-the-merchant-receipts-via-copy_to
+# "Custom Fees":#fee
+# "Simple shopping cart":#simple-cart-via-items
 
 *Note:* The Solidstone page used as an example in this document will be @Machine_Shop@. Requests are usually HTTP POST requests, although on occasion GET elements are included.
 
