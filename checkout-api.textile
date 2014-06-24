@@ -37,6 +37,10 @@ h3. Stage 1
 | fee       | A special field allowing a fee to be added. See 'Fee' under 'Usage' below. | |
 | items[]   | @items[]@ can be used as many times as you would like for a simple shopping cart ||
 | display_login | Set this to show logins on simple checkouts ||
+| callback  | A redirect URL for after a transaction is approved/declined ||
+| callback_field[id] | Custom callback transaction ID field ||
+| callback_field[status] | Custom callback status field ||
+| callback_field[message] | Custom callback message field ||
 
 h3. Stage 2
 
@@ -202,4 +206,14 @@ You could alternatively use multiple @name@ and @amount@ inputs, like so:
 
 <pre><code><input name=name[0] value="Logo T-shirt (sm)"> <input name=amount[0] value="$15">
 <input name=name[1] value="Logo T-shirt (lg)"> <input name=amount[1] value="$16">
+</code></pre>
+
+
+h2. Callback / redirect
+
+
+<pre><code><input type=hidden name=callback value="https://example.com/return_transaction?token=438271">
+<input type=hidden name=callback_field[id] value=trans_id>
+<input type=hidden name=callback_field[status] value=status>
+<input type=hidden name=callback_field[message] value=msg>
 </code></pre>
