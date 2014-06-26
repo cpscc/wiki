@@ -132,6 +132,11 @@ It's also possible to make a series with the same name by adding @[]@ brackets t
 <input type="checkbox" name="memo[Support for][]" value="Family Housing">
 <input type="checkbox" name="memo[Support for][]" value="Area of Greatest Need"></code></pre>
 
+This will allow you to have more than one value of a custom field selected, which will then be combined like so
+(given the final two checkboxes in the last example are checked):
+
+<pre><code>Support for: Family Housing // Area of Greatest Need</code></pre>
+
 h3. Magic Designations
 
 A @memo[To]@ field can be used for designations, and will show in the dashboard as a transaction's category.
