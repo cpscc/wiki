@@ -197,7 +197,7 @@ amount: 15
 customer[firstname]: bob
 customer[lastname]: parr
 customer[email]: robertp@insuricare.com
-check[aba]: 0311003933
+check[aba]: 031100393
 check[account]: 9999999999
 check[type]: checking
 ```
@@ -225,7 +225,7 @@ amount: 15
 customer[firstname]: bob
 customer[lastname]: parr
 customer[email]: robertp@insuricare.com
-check[aba]: 0311003933
+check[aba]: 031100393
 check[account]: 9999999999
 check[type]: checking
 ```
