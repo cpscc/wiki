@@ -1,4 +1,4 @@
-The Cornererstone API
+The Cornerstone API
 =====================
 
 Schema:
