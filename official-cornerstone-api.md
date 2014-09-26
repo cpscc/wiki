@@ -34,7 +34,13 @@ Authentication is provided by [HTTP Basic Authentication](http://tools.ietf.org/
 
 For GET requests, all parameters not included in the resource path can be accessed as an HTTP query string parameter:
 
-    $ curl -i -u id:key https://api.cornerstone.cc/transactions/Rod+and+Jackie?date=03/01/2013
+    $ curl -i -u client_z:key_z "https://api.cornerstone.cc/v1/transactions?range=*&show_test"
+
+Other requests are placed in the body of the request as POST parameters:
+
+    $ curl -i -u client_z:key_z -X POST https://api.cornerstone.cc/v1/transactions -d \
+      "amount=15&card[number]=4444333322221111&card[expmonth]=12&card[expyear]=23\
+       &customer[firstname]=Robert&customer[lastname]=Parr&customer[email]=robertp@example.com"
 
 ## HTTP Verbs
 
