@@ -424,7 +424,7 @@ partnername | Name of the partner the client can access applications for - optio
 id | ID to be given to the client - Optional
 secret | Key to be created for the client - Optional
 
-Note: except in rare cases, only Cornerstone has the need to create client IDs and keys.
+Note: except in rare cases, only Cornerstone has the need to create client IDs and keys, and we will provide them for you.
 
 ### Examples
 
