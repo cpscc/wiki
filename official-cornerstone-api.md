@@ -55,10 +55,10 @@ Other requests are placed in the body of the request as POST parameters:
 
 There are three types of errors our API will give you:
 
-- `auth_error`: Thrown in two circumstances. When client ID and key are missing or unmatched, and when the client doesn't have permissions to perform certain API actions.
-- `bad_request`: When arguments are missing or do not match a specific pattern.
-- `not_found`: If a resource referred to by its identifier is missing, or a client lacks permission to view it.
-- `internal`: Any internal problem. Please [contact us](mailto:rm@cornerstone.cc) right away if you experience one of these. They are very rare and can be dangerous if left in the wild.
+- `401``auth_error`: Thrown in two circumstances. When client ID and key are missing or unmatched, and when the client doesn't have permissions to perform certain API actions.
+- `400``bad_request`: When arguments are missing or do not match a specific pattern.
+- `404``not_found`: If a resource referred to by its identifier is missing, or a client lacks permission to view it.
+- `500``internal`: Any internal problem. Please [contact us](mailto:rm@cornerstone.cc) right away if you experience one of these. They are very rare and can be dangerous if left in the wild.
 
 All errors return as a Json object, and contain at least two properties: `error` and `reason`. Often a `try` property is also given, to hint at possible next steps. When applicable, a `user_message` is also sent, which is always a safe message to display directly to users.
 
