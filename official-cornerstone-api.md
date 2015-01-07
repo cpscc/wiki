@@ -190,7 +190,7 @@ HTTP/1.1 200 OK
 Approved EFT Transaction:
 
 
-    POST https://apit.cornerstone.cc/v1/transactions
+    POST https://api.cornerstone.cc/v1/transactions
 
 ```yaml
 amount: 15
@@ -218,7 +218,7 @@ HTTP/1.1 200 OK
 
 EFT not enabled:
 
-    POST https://apit.cornerstone.cc/v1/transactions
+    POST https://api.cornerstone.cc/v1/transactions
 
 ```yaml
 amount: 15
