@@ -95,8 +95,8 @@ HTTP/1.1 200 OK
 
 {
 	"cornerstone": "Howdy there!",
-	"version": 1,
-	"documentation": "http://cornerstoneapi.com/"
+	"version": "1.0",
+	"documentation": "https://github.com/cpscc/wiki/blob/master/official-cornerstone-api.md"
 }
 ```
 
@@ -446,4 +446,4 @@ HTTP/1.1 200 OK
 }
 ```
 
-`curl -i -u client:key http://api.cornerstone.cc:8080/v1/clients -d "pagename=Test Account"`
+`curl -i -u client:key https://api.cornerstone.cc/v1/clients -d "pagename=Test Account"`
