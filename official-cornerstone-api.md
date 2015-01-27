@@ -1,5 +1,5 @@
-The Cornerstone API
-=====================
+The Cornerstone Dashboard API
+=============================
 
 Schema:
 
@@ -319,7 +319,7 @@ The following parameters make up the billing address and may or may not be requi
 
 Fetch a list of transactions, according to a given filter.
 
-### Paramenters
+### Parameters
 
 Name | Usage
 ----:| -----
