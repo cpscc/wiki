@@ -334,6 +334,7 @@ scheduled      | Display scheduled transactions instead of approved or declined 
 show_test      | Display test transactions (optional)
 trans_id       | Fetch a singe transaction by ID. (optional)
 custom[]       | Filter by any custom fields that may be present on the transaction (optional)
+include_gid    | Include the transaction ID in the backend gateway with the response (optional)
 
 
 # Merchant Applications Status
