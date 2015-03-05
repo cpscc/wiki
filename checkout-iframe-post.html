@@ -1,0 +1,27 @@
+<!-- For further documentation, see https://github.com/cpscc/wiki/blob/master/checkout-api.textile -->
+
+<form method="post" action="https://give.cornerstone.cc/gearbox/checkout" target="frame">
+    <input type="hidden" name="oneitem">
+    <input type="hidden" name="name" value="Donation">
+    <input type="hidden" name="callback" value="https://example.com/return_transaction_input">
+    <input type="hidden" name="callback_field[id]" value="trans_id">
+    <input type="hidden" name="callback_field[status]" value="status">
+    <input type="hidden" name="callback_field[message]" value="msg">
+
+    <input name="amount" value="$50.00">
+
+    <input type="text" name="customer[firstname]" value="Bob">
+    <input type="text" name="customer[lastname]" value="Parr">
+    <input type="text" name="customer[email]" value="email@example.com">
+    <input type="text" name="customer[address]" value="123 Test Street">
+    <input type="text" name="customer[company]" value="APT 13">
+    <input type="text" name="customer[city]" value="San Diego">
+    <input type="text" name="customer[state]" value="CA">
+    <input type="text" name="customer[zip]" value="92101">
+      
+    <textarea name="customer[comment]">This is a test</textarea>
+
+    <button type="submit">Continue</button>
+</form>
+
+<iframe src="" name="frame" style="width: 100%; height: 88vh"></iframe>
