@@ -12,7 +12,7 @@ redirect to the given path but without logging in.
 
 URL Segments:  
 `<client_id>`: The client ID, as issued by Cornerstone  
-`<redirect_path>`: (optional) The path where 
+`<redirect_path>`: (optional) After auth, the client (browser) redirects to this path, local to the domain. 
 
 Parameters:  
 `auth`: Email address, encrypted using AES-128-CBC encrypted using a shared key Cornerstone provides.  
