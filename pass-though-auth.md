@@ -18,7 +18,7 @@ Parameters:
 `auth`: Email address, encrypted using AES-128-CBC encrypted using a shared key Cornerstone provides.  
 `test`: (optional) If included, instead of redirecting, reports success of decryption.
 
-Example (paste into browser):
+Example (browser-pastable):
 
     data:text/html,
     <form method="post" action="https://give.cornerstone.cc/auth/Gearbox/transactions">
