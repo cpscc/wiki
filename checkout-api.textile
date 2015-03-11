@@ -208,10 +208,14 @@ With a total altogether of $31.
 
 h3. Alternate
 
-You could alternatively use multiple @name@ and @amount@ inputs, like so:
+You could alternatively use multiple @name@ and @amount@ pairs.
+For each @amount[]@ there must be a matching @name[]@.
 
-<pre><code><input name=name[0] value="Logo T-shirt (sm)"> <input name=amount[0] value="$15">
-<input name=name[1] value="Logo T-shirt (lg)"> <input name=amount[1] value="$16">
+<pre><code><input name=name[0] value="Logo T-shirt (sm)">
+<input name=amount[0] value="$15">
+
+<input name=name[1] value="Logo T-shirt (lg)">
+<input name=amount[1] value="$16">
 </code></pre>
 
 
