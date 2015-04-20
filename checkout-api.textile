@@ -31,6 +31,7 @@ h3. Stage 1
 | merchant  | Merchant name | Only required if different than the merchant/site name given in the URL |
 | recurring | Can be @once@, @weekly@, @monthly@, @quarterly@, and @yearly@ | |
 | startdate | A date in the format @mm/dd/yyyy@. If the day is higher than 30 it is changed to 30. | |
+| installments | Number of installments to complete before cancelling the transaction. If set to 0, runs until manually cancelled. | |
 | type      | Transaction type. Not used for simple transactions. | |
 | oneitem   | @true@ / @false@ — Denotes whether a checkout is simple or not. | Required for simple requests |
 | memo      | Can be either a simple string, or one or more custom fields. | |
