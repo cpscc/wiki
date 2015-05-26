@@ -228,6 +228,11 @@ the customer will be redirected to this URL.
 
 <pre><code><input type=hidden name=callback value="https://example.com/return_transaction?token=438271"></code></pre>
 
+You have the option of limiting the callback to only redirect on approvals, 
+while directing to our decline page upon a declined transaciton.
+
+<pre><code><input type=hidden name=decline_callback value=0></code></pre>
+
 On the way back, our system appends details such as the transaction ID (on an approved transaction),
 the status of the transaction (approved or declined), and if the transaction was declined,
 a message containing the reason for a decline.
