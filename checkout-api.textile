@@ -6,7 +6,7 @@ h1. Solidstone Checkout API
 # "Basic Requusts":#a-basic-request
 # "Custom Fields":#custom-fields-via-memo
 # "Recurring/scheduled transactions":#recurring-transaction-via-recurring
-# "Carbon Copy Merchants":#carbon-copying-the-merchant-receipts-via-copy_to
+# "Receipt Carbon Copy":#carbon-copying-the-merchant-receipts-via-copy_to
 # "Custom Fees":#fee
 # "Installments":#installments
 # "Simple shopping cart":#simple-cart-via-items
