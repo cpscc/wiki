@@ -223,7 +223,7 @@ h2. Simple Cart (via @items@)
 
 Simple carts can be made using an @items[]@ input:
 
-<pre><code><input type=checkbox name=items[] value="Logo T-shirt (sm): $15"></code>
+<pre><code><input type=checkbox name=items[] value="Logo T-shirt (sm): $15">
 <input type=checkbox name=items[] value="Logo T-shirt (lg): $16"></code></pre>
 
 Which would yield a memo along these lines:
