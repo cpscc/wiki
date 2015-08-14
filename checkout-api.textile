@@ -6,9 +6,9 @@ h1. Solidstone Checkout API
 # "Basic Requusts":#a-basic-request
 # "Custom Fields":#custom-fields-via-memo
 # "Recurring/scheduled transactions":#recurring-transaction-via-recurring
+# "Installments":#installments
 # "Receipt Carbon Copy":#carbon-copying-the-merchant-receipts-via-copy_to
 # "Custom Fees":#fee
-# "Installments":#installments
 # "Simple shopping cart":#simple-cart-via-items
 # "Callback / Redirect URL":#callback--redirect
 
@@ -144,6 +144,8 @@ h3. Magic Designations
 
 A @memo[To]@ field can be used for designations, and will show in the dashboard as a transaction's category.
 
+
+
 h2. Recurring Transaction (via @recurring@)
 
 Mike has some serialized work he does in his Machine Shop for agreed amounts. So he also needs a recurring option. The recommended way to do this is by adding a @select@ (drop down) element:
@@ -161,6 +163,8 @@ Or with a checkbox:
 
 <pre><code><label><input type=checkbox name=recurring value=monthly> Make this a monthly payment.</label></code></pre>
 
+
+
 h2. Scheduling a transaction in the future
 
 This can be done with a @start-date@. This accepts a date like @12/31/2000@
@@ -174,25 +178,6 @@ If you have multiple forms (such as registration forms) that need to go to sever
 <pre><code><input type=hidden name=copy_to value="brian@example.com, nate@example.com"></code></pre>
 
 Be aware that this may open the email addresses to view from bots or anyone who views the source. If this is a problem for you, then have the email addresses set globally for your checkout page.
-
-h2. Fee
-
-Sometimes you may want to add a fee. At present, one fee is possible on stage 1. Below is a drop down that allows a user to select a transaction type, which then adds the fee to the checkout page, updating the total, and appending a subtotal and fee amount to the memo.
-
-<pre><code>Transaction type:
-<select name=fee>
-    <option value="Transaction Fee: 3%">MasterCard or Discover</option>
-    <option value="Transaction Fee: 4%">American Express</option>
-    <option value="Transaction Fee: $3.95">Visa</option>
-    <option value="Transaction Fee: $2.95">E-Check / ACH</option>
-</select></code></pre>
-
-If the user selected an amount of $50 dollars, using a Discover or MasterCard, the memo on the next page would look much like the following:
-
-<pre><code>Subtotal: $50.00 
-Transaction Fee: $1.50 </code></pre>
-
-You can use this with radio buttons, checkboxes, or a hidden input (which you can set with Javascript or JQuery).
 
 
 h2. Installments
@@ -217,6 +202,27 @@ It is possible to have a fixed set of installments on a recurring transaction us
 For particular situations, it is also possible to set a fixed number of installments that cannot be changed by the cardholder.
 
 <pre><code><input type="hidden" name="installments" value="12"></code></pre>
+
+
+
+h2. Fee
+
+Sometimes you may want to add a fee. At present, one fee is possible on stage 1. Below is a drop down that allows a user to select a transaction type, which then adds the fee to the checkout page, updating the total, and appending a subtotal and fee amount to the memo.
+
+<pre><code>Transaction type:
+<select name=fee>
+    <option value="Transaction Fee: 3%">MasterCard or Discover</option>
+    <option value="Transaction Fee: 4%">American Express</option>
+    <option value="Transaction Fee: $3.95">Visa</option>
+    <option value="Transaction Fee: $2.95">E-Check / ACH</option>
+</select></code></pre>
+
+If the user selected an amount of $50 dollars, using a Discover or MasterCard, the memo on the next page would look much like the following:
+
+<pre><code>Subtotal: $50.00 
+Transaction Fee: $1.50 </code></pre>
+
+You can use this with radio buttons, checkboxes, or a hidden input (which you can set with Javascript or JQuery).
 
 
 h2. Simple Cart (via @items@)
@@ -244,6 +250,7 @@ For each @amount[]@ there must be a matching @name[]@.
 <input name=name[1] value="Logo T-shirt (lg)">
 <input name=amount[1] value="$16">
 </code></pre>
+
 
 
 h2. Callback / redirect
