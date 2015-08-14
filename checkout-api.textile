@@ -81,7 +81,9 @@ There are three payment methods allowed. @mailacheck@ is a special type of trans
 | card[expyear] | 2 digits | If CC |
 | card[cvv] | 3-4 digits | If CC |
 
+
 h1. Usage
+
 
 h2. A Basic Request
 
@@ -97,6 +99,7 @@ We have Mike running a Machine Shop who needs a basic online bill pay for his cu
 </code></pre>
 
 But Mike also needs some other functionality to make this really work for him.
+
 
 h2. Custom Fields (via @memo@)
 
@@ -140,6 +143,8 @@ This will allow you to have more than one value of a custom field selected, whic
 
 <pre><code>Support for: Family Housing // Area of Greatest Need</code></pre>
 
+
+
 h3. Magic Designations
 
 A @memo[To]@ field can be used for designations, and will show in the dashboard as a transaction's category.
@@ -171,14 +176,6 @@ This can be done with a @start-date@. This accepts a date like @12/31/2000@
 
 <pre><code><input name=start-date></code></pre>
 
-h2. Carbon Copying the Merchant Receipts (via @copy_to@)
-
-If you have multiple forms (such as registration forms) that need to go to several people, and it would be cumbersome to have all receipts sent to these email addresses (globally for your checkout page), you can use @copy_to@.
-
-<pre><code><input type=hidden name=copy_to value="brian@example.com, nate@example.com"></code></pre>
-
-Be aware that this may open the email addresses to view from bots or anyone who views the source. If this is a problem for you, then have the email addresses set globally for your checkout page.
-
 
 h2. Installments
 
@@ -203,6 +200,14 @@ For particular situations, it is also possible to set a fixed number of installm
 
 <pre><code><input type="hidden" name="installments" value="12"></code></pre>
 
+
+h2. Carbon Copying the Merchant Receipts (via @copy_to@)
+
+If you have multiple forms (such as registration forms) that need to go to several people, and it would be cumbersome to have all receipts sent to these email addresses (globally for your checkout page), you can use @copy_to@.
+
+<pre><code><input type=hidden name=copy_to value="brian@example.com, nate@example.com"></code></pre>
+
+Be aware that this may open the email addresses to view from bots or anyone who views the source. If this is a problem for you, then have the email addresses set globally for your checkout page.
 
 
 h2. Fee
