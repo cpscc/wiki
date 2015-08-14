@@ -8,6 +8,7 @@ h1. Solidstone Checkout API
 # "Recurring/scheduled transactions":#recurring-transaction-via-recurring
 # "Carbon Copy Merchants":#carbon-copying-the-merchant-receipts-via-copy_to
 # "Custom Fees":#fee
+# "Installments":#installments
 # "Simple shopping cart":#simple-cart-via-items
 # "Callback / Redirect URL":#callback--redirect
 
@@ -192,6 +193,30 @@ If the user selected an amount of $50 dollars, using a Discover or MasterCard, t
 Transaction Fee: $1.50 </code></pre>
 
 You can use this with radio buttons, checkboxes, or a hidden input (which you can set with Javascript or JQuery).
+
+
+h2. Installments
+
+It is possible to have a fixed set of installments on a recurring transaction using the "installments" field. If set to "0" this will process until the payment is canceled.
+
+<pre><code><label>
+    Number of Payments
+    <select name="installments">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+</label></code></pre>
+
+For particular situations, it is also possible to set a fixed number of installments that cannot be changed by the cardholder.
+
+<pre><code><input type="hidden" name="installments" value="12"></code></pre>
 
 
 h2. Simple Cart (via @items@)
