@@ -12,6 +12,7 @@ Usage:
 
 - [API Version](#api-version)
 - [Transactions](#transactions)
+- [Payment Informaton Vault](#payment-information-vault)
 - [Merchant Application Status](#merchant-applications-status)
 - [Clients](#clients)
 
@@ -120,6 +121,7 @@ merchant | (optional) If the transaction is being charged to another merchant or
 recurring | (optional) Allows you to specify a recurring cycle. Values available: `once` (default), `weekly`, `monthly`, `quarterly`, or `yearly`. Without `startdate` set, all monthly transactions made on the 13th will fall on the 13th of the next month, and so on.
 start-date | (optional) Used to schedule a transaction in the future. Must be formatted: `mm/dd/yyyy`, e.g. `12/31/1999`. If the day of the month is above 30 (as it is in our example), it is silently shifted down to 30.
 memo | (optional) Can contain any string of text.
+vault | Vault the payment info -- this results in a 0 transaction record, where no authorization or capture has been made on for the payment
 
 Also required:
 
@@ -312,6 +314,50 @@ The following parameters make up the billing address and may or may not be requi
 #### customer[comment]
 
 `customer[comment]` is used for notes or comments from the customer. This is different than the memo.
+
+
+## Payment Informaton Vault
+
+    POST https://api.cornerstone.cc/v1/transactions
+
+Store payment information securely in a vault without making a charge or authorization to the payment method.
+
+To use the vault, add the “vault” field to a normal transaction request. When “vault” is present, the amount is no longer required, and if included, will be ignored. As long as the payment information is valid, you will receive an “approved” or “accepted” status.
+
+### Examples 
+
+Valid Vaulted Payment:
+
+    POST https://api.cornerstone.cc/v1/transactions
+
+```yaml
+vault: 1
+customer[email]: angusm@example.com
+customer[firstname]: Angus
+customer[lastname]: MacGyver
+card[number]: 370000000000002
+card[expmonth]: 12
+card[expyear]: 23
+card[cvv]: 1114
+```
+
+```json
+HTTP/1.1 200 OK
+
+{
+	"approved": [
+		{
+			"id": 99999,
+			"merchant": "Thorton Towing",
+			"reason": "Accepted",
+			"amount": 0,
+			"frequency": "once",
+			"startdate": false
+		}
+	]
+}
+```
+
 
 ## Fetch transactions
 
