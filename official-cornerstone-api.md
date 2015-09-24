@@ -373,6 +373,7 @@ range          | Filters by date or date range. Format: `12/31/1999` or `01/31/1
 amount         | Dollar amount. We try to determine what you mean automatically, so `13`, `13.00`, `$13`, and `13 dollars` all register as $13.00 USD. (optional)
 firstname      | Filter by customer's first name (optional)
 lastname       | Or customer's last name (optional)
+email 	       | Filter by customer's email (optional)
 payment_type[] | Can be a combination of `amex`, `discover`, `visa`, `mastercard`, and `check` (optional)
 merchant       | Filter by sub-merchant name (optional)
 failed         | Display declined transactions instead of approved transactions (optional)
