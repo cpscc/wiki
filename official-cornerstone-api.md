@@ -315,6 +315,10 @@ The following parameters make up the billing address and may or may not be requi
 
 `customer[comment]` is used for notes or comments from the customer. This is different than the memo.
 
+#### memo[]
+The memo parameter can be used to send various information.
+i.e. if a merchant wanted to post an invoice number they would pass it as `memo[Invoice]` with the attached value.
+
 
 ## Payment Informaton Vault
 
