@@ -1,7 +1,7 @@
 The Inventory Stuff
 ===================
 
-###Files: 
+###Files
 inventory_items.mustache, located in the partials folder.
 This is the basic layout of the template to be inserted on to the mustache page in place of or in lieu of the presets etc.
 ``` html
@@ -54,5 +54,5 @@ Example: https://give.cornerstone.cc/World+Wide+Village
 A simple bit of jquery is inserted per item to check and see if the items being entered in the input is more than the items_remaining which is passed via the backend.  If the items attempting to be bought is > items_remaining it will reset the value to the items_remaining value. (Tested in Chrome, FireFox, Edge, IE10)
 
 # Creating Inventory Items
-Inventory Items are created via the dashboard under the Inventory tab. 
+Inventory Items are created via the dashboard under the Inventory tab.  You may add as many details to an item as necessary. Any of the fields included in the item may be displayed on the page as well.
 
