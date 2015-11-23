@@ -113,7 +113,7 @@ HTTP/1.1 200 OK
     POST https://api.cornerstone.cc/v1/transactions
 
 ### Testing Credentials
-
+## SecureNet
 Card | Values
 ---- | -----
 number | 4444333322221111
@@ -125,6 +125,19 @@ eCheck | Values
 ---- | -----
 account | 9999999999
 routing | 031100393
+
+## Sage
+Card | Values
+---- | -----
+number | 4111111111111111
+expmo | 12
+expyr | 24
+cvv | 123
+
+eCheck | Values
+---- | -----
+account | 056008849
+routing | 12345678901234
 
 ### Parameters
 
