@@ -12,7 +12,7 @@ Usage:
 
 - [API Version](#api-version)
 - [Transactions](#transactions)
-- [Fetch Transactions](#fetch transactions)
+- [Fetch Transactions](#fetch-transactions)
 - [Update Schedules](#update-schedule)
 - [Payment Informaton Vault](#payment-information-vault)
 - [Merchant Application Status](#merchant-applications-status)
@@ -341,7 +341,7 @@ i.e. if a merchant wanted to post an invoice number they would pass it as `memo[
     
 Update scheduled transaction information to be processed at a future date.
 
-To update the transaction you must refer to a certain transaction ID.  These ID's are returned when a schedule is made or you can fetch the transaction ID's using the [Fetch Transactions](#fetch transactions) functionality.  If card of check information is passed it will return the updated token related to the transaction.  You made do a simple update without any card or check information such as adjusting the amount, token, cycle, startdate, or nextdate of a transaction.
+To update the transaction you must refer to a certain transaction ID.  These ID's are returned when a schedule is made or you can fetch the transaction ID's using the [Fetch Transactions](#fetch-transactions) functionality.  If card of check information is passed it will return the updated token related to the transaction.  You made do a simple update without any card or check information such as adjusting the amount, token, cycle, startdate, or nextdate of a transaction.
 
 ### Parameters
 
@@ -408,7 +408,7 @@ HTTP/1.1 200 OK
 ```
 
 
-## Fetch transactions
+## Fetch-Transactions
 
     GET https://api.cornerstone.cc/v1/transactions
 
