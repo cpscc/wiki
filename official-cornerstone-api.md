@@ -16,6 +16,7 @@ Usage:
 - [Update Schedules](#update-schedule)
 - [Payment Informaton Vault](#payment-information-vault)
 - [Merchant Application Status](#merchant-applications-status)
+- [Tenants](#tenants)
 - [Clients](#clients)
 
 # Schema 
@@ -352,6 +353,8 @@ cycle | (optional) Allows you to specify a recurring cycle. Values available: `o
 nextdate | (optional) Used to schedule the next date a transaction will occur. Must be formatted: `mm/dd/yyyy`
 startdate | (optional) Used to schedule first occurence of transaction if none have occured. Must be formatted: `mm/dd/yyyy`
 token | (optional) Used to update the payment token for a transaction.  Payment tokens are returned when a recurring transaction is created or future payment scheduled.
+card[] | (optional) Used to update card information for a transaction.
+check[] | (optional) Used to update check information for a transaction.
 
 #### card[] - Credit Card
 * `card[number]` Credit card number. Must contain 15-16 digits.
@@ -502,6 +505,48 @@ HTTP/1.1 404 Not Found
 	"reason": "No application found by ID: xyz"
 }
 ```
+# Tenants
+
+## Create a Tenant
+
+    POST https://api.cornerstone.cc/v1/tenants
+    
+### Parameters
+
+Name | Description
+---- | -----------
+merchant | (required) Name of the page or site the client has access to.
+login | (required) Email to be associated the user account.
+password | (required) Password associated with the account.
+firstname | (optional) First name of the user.
+lastname | (optional) Last name of the user.
+
+## Fetch a Tenant
+
+    GET https://api.cornerstone.cc/v1/tenants
+    
+### Parameters
+
+Name | Description
+---- | -----------
+id | (required) Customer ID used to fetch customer account.
+
+## Update a Tenant
+
+    PATCH https://api.cornerstone.cc/v1/tenants
+    
+### Parameters
+
+Name | Description
+---- | -----------
+id | (required) Customer ID used to update.
+logins | (optional) Update user login email.
+firstname | (optional) Update user first name.
+lastname | (optional) Update user last name.
+
+## Delete a Tenant
+
+    DELETE https://api.cornerstone.cc/v1/tenants/<customerid>
 
 
 # Clients
