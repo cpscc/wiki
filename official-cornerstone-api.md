@@ -521,6 +521,14 @@ password | (required) Password associated with the account.
 firstname | (optional) First name of the user.
 lastname | (optional) Last name of the user.
 
+```json
+HTTP/1.1 200 OK
+
+{
+        "success": true,
+        "tenant_id": 757928
+}
+```
 ## Fetch a Tenant
 
     GET https://api.cornerstone.cc/v1/tenants
@@ -531,6 +539,21 @@ Name | Description
 ---- | -----------
 id | (required) Customer ID used to fetch customer account.
 
+```json
+HTTP/1.1 200 OK
+
+{
+        "success": true,
+        "tenant": {
+                "id": "757928",
+                "merchant": "oneitem",
+                "firstname": "bruce",
+                "lastname": "wayne",
+                "login": "bwayne@yahoo.com",
+                "password": "stuff"
+        }
+}
+```
 ## Update a Tenant
 
     PATCH https://api.cornerstone.cc/v1/tenants
@@ -543,11 +566,35 @@ id | (required) Customer ID used to update.
 logins | (optional) Update user login email.
 firstname | (optional) Update user first name.
 lastname | (optional) Update user last name.
+```json
+HTTP/1.1 200 OK
 
+{
+        "success": true,
+        "tenant": {
+                "id": "757928",
+                "merchant": "oneitem",
+                "firstname": "spider",
+                "lastname": "man",
+                "login": "spiderman@aol.com",
+                "password": "stuff"
+        },
+        "message": "ID 757928 updated"
+}
+```
 ## Delete a Tenant
 
     DELETE https://api.cornerstone.cc/v1/tenants/<customerid>
 
+```
+HTTP/1.1 200 OK
+
+{
+        "success": true,
+        "tenant_id": 757928,
+        "message": "ID 757928 removed."
+}
+```
 
 # Clients
 
