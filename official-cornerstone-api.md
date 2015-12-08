@@ -16,8 +16,8 @@ Usage:
 - [Update Schedules](#update-schedule)
 - [Payment Informaton Vault](#payment-information-vault)
 - [Merchant Application Status](#merchant-applications-status)
-- [Tenants](#tenants)
-- [Clients](#clients)
+- [Tenants (Customers)](#tenants)
+- [API Clients](#clients)
 
 # Schema 
 
