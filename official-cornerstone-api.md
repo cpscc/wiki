@@ -474,11 +474,11 @@ HTTP/1.1 200 OK
 	"id": "GV5ScI689yJ07ezSi3kd4HIPi",
 	"partner": "Realm of Creativity",
 	"dba": "Laurence Chinese Palace",
-	"pending": true
+	"approved": false
 }
 ```
 
-A pending transaction:
+A pending application:
 
     GET https://api.cornerstone.cc/v1/applications/GV5ScI689yJ07ezSi3kd4HIPi
 
@@ -489,7 +489,7 @@ HTTP/1.1 200 OK
 	"id": "LQr7oUAYJZLQsh27i1kP",
 	"partner": "Realm of Creativity",
 	"dba": "James Smith Pizzeria",
-	"approved": false
+	"pending": true
 }
 ```
 
