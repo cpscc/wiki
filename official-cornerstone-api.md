@@ -41,7 +41,7 @@ In the event of a network fault, it is also possible to try the alternative endp
 
     https://cornerstone2.cc/api/v1
 
-There is also a sandbox endpoint. Please note that you will need separate credentials to access this endpoint. It also also not recommended to send any live information through, only testing data.
+There is also a sandbox endpoint. Please note that you will need separate credentials to access this endpoint. It also also not recommended to send any live or confidential information, only testing data.
 
     http://api.cornerstone.cc:8080/v1
 
