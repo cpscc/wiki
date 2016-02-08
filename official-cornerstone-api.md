@@ -157,12 +157,9 @@ recurring | (optional) Allows you to specify a recurring cycle. Values available
 start-date | (optional) Used to schedule a transaction in the future. Must be formatted: `mm/dd/yyyy`, e.g. `12/31/1999`. If the day of the month is above 30 (as it is in our example), it is silently shifted down to 30.
 memo | (optional) Can contain any string of text.
 vault | Vault the payment info -- this results in a 0 transaction record, where no authorization or capture has been made on for the payment
-
-Also required:
-
-- `card[]` - contains: `card[number]`, `card[expmonth]`, `card[expyear]` and `card[cvv]`
-- `check[]` - only required if `card[]` is missing, contains: `check[aba]`, `check[account]` and `check[type]`. `type` can be one of `savings`, `checking`, `bsave`or `bcheck`.
-- `customer[firstname]`, `customer[lastname]`, and `customer[email]` are also required.
+card[] | contains: `card[number]`, `card[expmonth]`, `card[expyear]` and `card[cvv]`
+check[] | only required if `card[]` is missing, contains: `check[aba]`, `check[account]` and `check[type]`. `type` can be one of `savings`, `checking`, `bsave`or `bcheck`.
+customer[] | Customer billing information. `customer[firstname]`, `customer[lastname]`, and `customer[email]` are required.
 
 For more details, see "Parameter Details" below.
 
