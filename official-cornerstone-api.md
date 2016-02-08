@@ -170,6 +170,7 @@ Approved CC transaction:
     POST https://api.cornerstone.cc/v1/transactions
 
 ```yaml
+request_id: abc123
 amount: 15
 customer[firstname]: Bob
 customer[lastname]: Parr
@@ -186,10 +187,44 @@ HTTP/1.1 200 OK
 {
     "approved": [
         {
-            "amount": 15,
+            "id": 8984,
+            "merchant": "Test Ministry",
+            "reason": "Accepted",
+            "amount": "15",
             "frequency": "once",
-            "id": 1234
+            "startdate": false,
+            "test": false,
+            "token": "visa.1111.1221.NTAwMzc1MC0yMw=="
         }
+    ]
+}
+```
+
+`request_id` conflict:
+
+    POST https://api.cornerstone.cc/v1/transactions
+
+```yaml
+request_id: abc123
+amount: 15
+customer[firstname]: Bob
+customer[lastname]: Parr
+customer[email]: robertp@example.com
+card[number]: 4444333322221111
+card[expmonth]: 12
+card[expyear]: 21
+card[cvv]: 123
+```
+
+```json
+HTTP/1.1 400 Bad Request
+
+{
+    "error": "bad_request",
+    "reason": "request_id already exists: abc123",
+    "request_id_conflict": "abc123",
+    "transaction_ids": [
+        "8984"
     ]
 }
 ```
@@ -350,6 +385,24 @@ The following parameters make up the billing address and may or may not be requi
 #### memo[]
 The memo parameter can be used to send various information.
 i.e. if a merchant wanted to post an invoice number they would pass it as `memo[Invoice]` with the attached value.
+
+
+### Request ID
+
+The `request_id` parameter is provided to allow re-sending a transaction request in the case of network faults or 
+timeouts, without the risk of a duplicate transaction processing. A `request_id` must be unique within the system,
+and it is recommended that you use the full 255 characters of space. An example of how you may construct a `request_id`
+(although the format is completely up to you):
+
+    <ORGANIZATION NAME>.<TIMESTAMP>.<HASH OF REQUEST>.<RANDOM DATA>
+    
+So, for example, given your organization is called "Orient Missions", you could have a `request_id` that looks like the following:
+
+    ORIENT MISSIONS.1454961474.21002edf4b6627c85aece64f669b63a905819b43.R|yw*ZOmqaZ42(%z^n8= ... (truncated)
+
+Or, it is possible to simply used an entirely random string:
+
+    tg7cVcPg[u5a+AX/rG33uGEGzff6LdPyoFbOeTn+%d2+pBGy0E@mdEtf]%zidZzV7di6_3|mM3MJ!jlwn7-4NMCA ... (truncated)
 
 
 ## Update-Schedule
