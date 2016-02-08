@@ -37,11 +37,13 @@ The main endpoint for the API is
 
     https://api.cornerstone.cc/v1
 
-In the event of a network fault, it is also possible to try the alternative endpoint
+In the event of a network fault, it is also possible to try the alternative endpoint. (This endpoint routes into the API from a different IP address, registrar, DNS provider, and SSL authority.)
 
     https://cornerstone2.cc/api/v1
 
-This endpoint routes into the API from a different IP address, registrar, DNS provider, and SSL authority.
+There is also a sandbox endpoint. Please note that you will need separate credentials to access this endpoint. It also also not recommended to send any live information through, only testing data.
+
+    http://api.cornerstone.cc:8080/v1
 
 
 ## Authentication
