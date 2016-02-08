@@ -391,7 +391,7 @@ i.e. if a merchant wanted to post an invoice number they would pass it as `memo[
 
 The `request_id` parameter is provided to allow re-sending a transaction request in the case of network faults or 
 timeouts, without the risk of a duplicate transaction processing. A `request_id` must be unique within the system,
-and it is recommended that you use the full 255 characters of space. An example of how you may construct a `request_id`
+and it is recommended that you use the full 255 characters of space to avoid any "false positives" with the conflicts. An example of one way you may construct a `request_id`
 (although the format is completely up to you):
 
     <ORGANIZATION NAME>.<TIMESTAMP>.<HASH OF REQUEST>.<RANDOM DATA>
