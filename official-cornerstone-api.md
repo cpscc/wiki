@@ -1,8 +1,9 @@
 The Cornerstone Dashboard API
 =============================
 
-Schema:
+Introduction:
 
+- [Endpoints](#enpoints)
 - [Parameters](#parameters)
 - [Authenication](#authentication)
 - [HTTP Verbs](#http-verbs)
@@ -19,14 +20,29 @@ Usage:
 - [Tenants (Customers)](#tenants)
 - [API Clients](#clients)
 
-# Schema 
+# Introduction 
 
-The Cornerstone API is a [REST](http://en.wikipedia.org/wiki/REST) API secured with SSL that accepts parameters as HTTP GET and POST fields, and returns information as [JSON](http://en.wikipedia.org/wiki/JSON). You can access the API via this endpoint: `https://api.cornerstone.cc/`.
+The Cornerstone API is a [REST](http://en.wikipedia.org/wiki/REST) API secured with SSL that accepts parameters as HTTP GET and POST fields, and returns information as [JSON](http://en.wikipedia.org/wiki/JSON). 
 
+<!--
 Inspiration for API:
 [Apache CouchDB](http://en.wikipedia.org/wiki/CouchDB#Accessing_data_via_HTTP),
 [Google Fusion Tables](https://developers.google.com/fusiontables/docs/v1/using),
 [Github API](http://developer.github.com/).
+-->
+
+## Endpoints
+
+The main endpoint for the API is
+
+    https://api.cornerstone.cc/v1
+
+In the event of a network fault, it is also possible to try the alternative endpoint
+
+    https://cornerstone2.cc/api/v1
+
+This endpoint routes into the API from a different IP address, registrar, DNS provider, and SSL authority.
+
 
 ## Authentication
 
