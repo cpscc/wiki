@@ -3,7 +3,7 @@ The Cornerstone Dashboard API
 
 Introduction:
 
-- [Endpoints](#enpoints)
+- [Endpoints](#endpoints)
 - [Parameters](#parameters)
 - [Authenication](#authentication)
 - [HTTP Verbs](#http-verbs)
