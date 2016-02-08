@@ -18,7 +18,7 @@ Usage:
 - [Payment Informaton Vault](#payment-information-vault)
 - [Merchant Application Status](#merchant-applications-status)
 - [Tenants (Customers)](#tenants)
-- [API Clients](#clients)
+- [API Clients](#api-clients)
 
 # Introduction 
 
@@ -614,7 +614,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-# Clients
+# API Clients
 
     GET https://api.cornerstone.cc/v1/clients
     GET https://api.cornerstone.cc/v1/clients/<client_id>
