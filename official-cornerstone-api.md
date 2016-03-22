@@ -150,18 +150,16 @@ routing | 031100393 | 12345678901234
 
 Name | Usage
 ---- | -----
+request_id | (optional, recommended) A unique id string (max. length 255) sent along with the transaction request. If the transaction request is re-sent, the `request_id` will be checked for uniqueness, and if it is found, a `request_id_conflict` error will be sent with a `400` response code. Please see the notes and examples on this below.
 amount | Amount in US dollars. We try to determine what you mean automatically, so `13`, `13.00`, `$13`, and `13 dollars` all register as $13.00 USD.
 merchant | (optional) If the transaction is being charged to another merchant or a sub-account, it is specified here.
 recurring | (optional) Allows you to specify a recurring cycle. Values available: `once` (default), `weekly`, `monthly`, `quarterly`, or `yearly`. Without `startdate` set, all monthly transactions made on the 13th will fall on the 13th of the next month, and so on.
 start-date | (optional) Used to schedule a transaction in the future. Must be formatted: `mm/dd/yyyy`, e.g. `12/31/1999`. If the day of the month is above 30 (as it is in our example), it is silently shifted down to 30.
 memo | (optional) Can contain any string of text.
 vault | Vault the payment info -- this results in a 0 transaction record, where no authorization or capture has been made on for the payment
-
-Also required:
-
-- `card[]` - contains: `card[number]`, `card[expmonth]`, `card[expyear]` and `card[cvv]`
-- `check[]` - only required if `card[]` is missing, contains: `check[aba]`, `check[account]` and `check[type]`. `type` can be one of `savings`, `checking`, `bsave`or `bcheck`.
-- `customer[firstname]`, `customer[lastname]`, and `customer[email]` are also required.
+card[] | contains: `card[number]`, `card[expmonth]`, `card[expyear]` and `card[cvv]`
+check[] | only required if `card[]` is missing, contains: `check[aba]`, `check[account]` and `check[type]`. `type` can be one of `savings`, `checking`, `bsave`or `bcheck`.
+customer[] | Customer billing information. `customer[firstname]`, `customer[lastname]`, and `customer[email]` are required.
 
 For more details, see "Parameter Details" below.
 
@@ -172,6 +170,7 @@ Approved CC transaction:
     POST https://api.cornerstone.cc/v1/transactions
 
 ```yaml
+request_id: abc123
 amount: 15
 customer[firstname]: Bob
 customer[lastname]: Parr
@@ -188,10 +187,44 @@ HTTP/1.1 200 OK
 {
     "approved": [
         {
-            "amount": 15,
+            "id": 8984,
+            "merchant": "Test Ministry",
+            "reason": "Accepted",
+            "amount": "15",
             "frequency": "once",
-            "id": 1234
+            "startdate": false,
+            "test": false,
+            "token": "visa.1111.1221.NTAwMzc1MC0yMw=="
         }
+    ]
+}
+```
+
+`request_id` conflict:
+
+    POST https://api.cornerstone.cc/v1/transactions
+
+```yaml
+request_id: abc123
+amount: 15
+customer[firstname]: Bob
+customer[lastname]: Parr
+customer[email]: robertp@example.com
+card[number]: 4444333322221111
+card[expmonth]: 12
+card[expyear]: 21
+card[cvv]: 123
+```
+
+```json
+HTTP/1.1 400 Bad Request
+
+{
+    "error": "bad_request",
+    "reason": "request_id already exists: abc123",
+    "request_id_conflict": "abc123",
+    "transaction_ids": [
+        "8984"
     ]
 }
 ```
@@ -352,6 +385,24 @@ The following parameters make up the billing address and may or may not be requi
 #### memo[]
 The memo parameter can be used to send various information.
 i.e. if a merchant wanted to post an invoice number they would pass it as `memo[Invoice]` with the attached value.
+
+
+### Request ID
+
+The `request_id` parameter is provided to allow re-sending a transaction request in the case of network faults or 
+timeouts, without the risk of a duplicate transaction processing. A `request_id` must be unique within the system,
+and it is recommended that you use the full 255 characters of space to avoid any "false positives" with the conflicts. An example of one way you may construct a `request_id`
+(although the format is completely up to you):
+
+    <ORGANIZATION NAME>.<TIMESTAMP>.<HASH OF REQUEST>.<RANDOM DATA>
+    
+So, for example, given your organization is called "Orient Missions", you could have a `request_id` that looks like the following:
+
+    ORIENT MISSIONS.1454961474.21002edf4b6627c85aece64f669b63a905819b43.R|yw*ZOmqaZ42(%z^n8= ... (truncated)
+
+Or, it is possible to simply used an entirely random string:
+
+    tg7cVcPg[u5a+AX/rG33uGEGzff6LdPyoFbOeTn+%d2+pBGy0E@mdEtf]%zidZzV7di6_3|mM3MJ!jlwn7-4NMCA ... (truncated)
 
 
 ## Update-Schedule
