@@ -15,7 +15,7 @@ Usage:
 - [Transactions](#transactions)
 - [Fetch Transactions](#fetch-transactions)
 - [Update Schedules](#update-schedule)
-- [Payment Informaton Vault](#payment-information-vault)
+- [Payment Information Vault](#payment-information-vault)
 - [Merchant Application Status](#merchant-applications-status)
 - [Tenants (Customers)](#tenants)
 - [API Clients](#api-clients)
@@ -437,7 +437,7 @@ check[] | (optional) Used to update check information for a transaction.
 * `check[type]` Bank account type. Can be one of: `savings`, `checking`, `bsave` (business savings) or `bcheck` (business checking).
 
 
-## Payment Informaton Vault
+## Payment Information Vault
 
     POST https://api.cornerstone.cc/v1/transactions
 
