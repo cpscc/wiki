@@ -417,6 +417,7 @@ To update the transaction you must refer to a certain transaction ID.  These ID'
 
 Name | Usage
 ---- | -----
+id | The ID of the transaction you would like to update. If the transaction cannot be found, or you do not have access, a "not_found" error will be returned.
 amount | Amount in US dollars. We try to determine what you mean automatically, so `13`, `13.00`, `$13`, and `13 dollars` all register as $13.00 USD.
 cycle | (optional) Allows you to specify a recurring cycle. Values available: `once` (default), `weekly`, `monthly`, `quarterly`, or `yearly`.
 nextdate | (optional) Used to schedule the next date a transaction will occur. Must be formatted: `mm/dd/yyyy`
