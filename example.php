@@ -8,7 +8,8 @@
 # Securenet: 4444333322221111 / 12 24 / 123
 # Sage:       4111111111111111 / 12 24 / 123
 #
-# For the id and key include the entire string give.
+# For the id and key make sure to include the entire string,
+# including the "client_", "sandbox_", or "key_" prefixes
 
 $data = array(
     "amount" => "15",
