@@ -18,7 +18,6 @@ Usage:
 - [Payment Information Vault](#payment-information-vault)
 - [Merchant Application Status](#merchant-applications-status)
 - [Tenants (Customers)](#tenants)
-- [API Clients](#api-clients)
 
 # Introduction 
 
