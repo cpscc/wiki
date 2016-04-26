@@ -6,7 +6,7 @@
 
 ## Vaulting ACH / eCheck Information
 
-    POST https://api.cornerstone.cc/v1/ach
+    POST https://api.cornerstone.cc/v1/ach/
 
 ### Parameters
 
@@ -16,8 +16,6 @@
 * `check[type]` Bank account type. Can be one of: `savings`, `checking`, `bsave` (business savings) or `bcheck` (business checking). ** Required **
 
 ### Examples
-
-    POST https://api.cornerstone.cc/v1/ach/
 
 ```yaml
 merchant: oneitem
@@ -37,7 +35,7 @@ HTTP/1.1 200 OK
 
 ## Fetching ACH / eCheck Information
 
-    POST https://api.cornerstone.cc/v1/ach/<token>
+    GET https://api.cornerstone.cc/v1/ach/
 
 ### Parameters
 
@@ -46,8 +44,6 @@ HTTP/1.1 200 OK
 
 
 ### Examples
-
-    POST https://api.cornerstone.cc/v1/ach/
 
 ```yaml
 merchant: Joe's Trucking
