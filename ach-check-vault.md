@@ -28,6 +28,7 @@ check[type]: checking
 
 ```json
 HTTP/1.1 200 OK
+
 {
         "success": true,
         "token": "check.0393.OTk="
@@ -54,6 +55,8 @@ token: 123
 ```
 
 ```json
+HTTP/1.1 200 OK
+
 {
         "merchant": "oneitem",
         "check": {
