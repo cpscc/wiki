@@ -1,7 +1,7 @@
 
 # ACH / eCheck
 
-    GET https://api.cornerstone.cc/v1/ach
+    POST https://api.cornerstone.cc/v1/ach
     GET https://api.cornerstone.cc/v1/ach/<token>
 
 ## Vaulting ACH / eCheck Information
@@ -32,7 +32,7 @@ routing: 99999999999
 
 ## Fetching ACH / eCheck Information
 
-    POST https://api.cornerstone.cc/v1/ach/<id>
+    POST https://api.cornerstone.cc/v1/ach/<token>
 
 ### Parameters
 
