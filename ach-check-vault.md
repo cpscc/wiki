@@ -49,9 +49,6 @@ All errors return as a Json object, and contain at least two properties: `error`
 
 # ACH / eCheck
 
-    POST https://api.cornerstone.cc/v1/ach
-    GET https://api.cornerstone.cc/v1/ach/<token>
-
 ## Vaulting ACH / eCheck Information
 
     POST https://api.cornerstone.cc/v1/ach/
@@ -80,6 +77,8 @@ HTTP/1.1 200 OK
         "token": "check.0393.OTk="
 }
 ```
+
+
 
 ## Fetching ACH / eCheck Information
 
