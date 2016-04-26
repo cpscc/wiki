@@ -10,24 +10,27 @@
 
 ### Parameters
 
-Name | Description
----- | -----------
-merchant | Name of the page or site the client has access to - **Required.**
-account | Account number to be vaulted - **Required.**
-routing | Routing Number to be vaulted - **Required.**
+* `merchant` Name of merchant associated with the token ** Required **
+* `check[aba]` 9-digit bank routing number. ** Required **
+* `check[account]` Bank account number. ** Required **
+* `check[type]` Bank account type. Can be one of: `savings`, `checking`, `bsave` (business savings) or `bcheck` (business checking). ** Required **
 
 ### Examples
 
     POST https://api.cornerstone.cc/v1/ach/
 
 ```yaml
-merchant: Joe's Trucking
-account: 031100393
-routing: 99999999999
+merchant: oneitem
+check[aba]: 031100393
+check[account]: 9999999999
+check[type]: checking
 ```
 
 ```json
-
+{
+        "success": true,
+        "token": "check.0393.OTk="
+}
 ```
 
 ## Fetching ACH / eCheck Information
@@ -36,10 +39,8 @@ routing: 99999999999
 
 ### Parameters
 
-Name | Description
----- | -----------
-merchant | Name of the page or site the client has access to - **Required.**
-token | Token associated with account information - **Required.**
+* `merchant` Name of merchant associated with the token ** Required **
+* `token` Token identifier for vaulted account ** Required **
 
 
 ### Examples
@@ -52,5 +53,12 @@ token: 123
 ```
 
 ```json
-
+{
+        "merchant": "oneitem",
+        "check": {
+                "account": "0331100393",
+                "aba": "99999999",
+                "type": "checking"
+        }
+}
 ```
