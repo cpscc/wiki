@@ -27,6 +27,7 @@ check[type]: checking
 ```
 
 ```json
+HTTP/1.1 200 OK
 {
         "success": true,
         "token": "check.0393.OTk="
