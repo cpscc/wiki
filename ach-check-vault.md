@@ -1,34 +1,56 @@
 
-# ACH Vault / Fetch
+# ACH / eCheck
 
     GET https://api.cornerstone.cc/v1/ach
     GET https://api.cornerstone.cc/v1/ach/<token>
 
-## Creating a client
+## Vaulting ACH / eCheck Information
 
     POST https://api.cornerstone.cc/v1/ach
 
 ### Parameters
 
-
-Note: except in rare cases, only Cornerstone has the need to create client IDs and keys, and we will provide them for you.
+Name | Description
+---- | -----------
+merchant | Name of the page or site the client has access to - **Required.**
+account | Account number to be vaulted - **Required.**
+routing | Routing Number to be vaulted - **Required.**
 
 ### Examples
 
-    POST https://api.cornerstone.cc/v1/clients
+    POST https://api.cornerstone.cc/v1/ach/
 
 ```yaml
-partnername: Joe's Trucking
-pagename: null
+merchant: Joe's Trucking
+account: 031100393
+routing: 99999999999
 ```
 
 ```json
-HTTP/1.1 200 OK
 
-{
-	"partnername": "Joe's Trucking",
-	"pagename": "null",
-	"id": "client_ioRIovisEjMQ1C28fy35",
-	"key": "key_GyiW9JbucJ9VmTOAwLpTxdn85"
-}
+```
+
+## Fetching ACH / eCheck Information
+
+    POST https://api.cornerstone.cc/v1/ach/<id>
+
+### Parameters
+
+Name | Description
+---- | -----------
+merchant | Name of the page or site the client has access to - **Required.**
+token | Token associated with account information - **Required.**
+
+
+### Examples
+
+    POST https://api.cornerstone.cc/v1/ach/
+
+```yaml
+merchant: Joe's Trucking
+token: 123
+```
+
+```json
+
 ```
