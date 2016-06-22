@@ -462,6 +462,7 @@ card[expyear]: 23
 card[cvv]: 1114
 ```
 
+Approved Refund
 ```json
 HTTP/1.1 200 OK
 
@@ -478,6 +479,47 @@ HTTP/1.1 200 OK
 	]
 }
 ```
+
+Declined Refund
+```json
+HTTP/1.1 200 OK
+
+{
+        "declined": {
+                "reason": "CREDIT CANNOT BE COMPLETED ON A VOID TRANSACTION"
+        }
+}
+```
+
+Errors
+```json
+HTTP/1.1 404 Bad Request
+
+{
+        "error": "parameter_not_found",
+        "reason": "Transaction ID."
+}
+```
+
+```json
+HTTP/1.1 404 Not Found
+
+{
+        "error": "transaction_not_found",
+        "reason": "No transaction by that ID found."
+}
+```
+
+```json
+HTTP/1.1 403 Forbidden
+
+{
+        "error": "auth_error",
+        "reason": "You are not authorized to refund this transaction."
+}
+
+```
+
 
 
 ## Fetch-Transactions
@@ -504,6 +546,34 @@ show_test      | Display test transactions (optional)
 trans_id       | Fetch a singe transaction by ID. (optional)
 custom[]       | Filter by any custom fields that may be present on the transaction (optional)
 include_gid    | Include the transaction ID in the backend gateway with the response (optional)
+
+## Refund Transactions
+
+    DELETE https://api.cornerstone.cc/v1/transactions?id=<id>
+
+Refund a transaction, passing the TransID as the parameter `id`.
+
+### Parameters
+
+Name | Usage
+----:| -----
+id | Cornerstone Transaction ID 
+
+```json
+HTTP/1.1 200 OK
+
+{
+	"approved": [
+		{
+			"refundedTrans": "219677",
+                	"refundRefID": 219749,
+                	"amount": -50
+		}
+	]
+}
+```
+
+
 
 
 # Merchant Applications Status
