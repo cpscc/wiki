@@ -14,6 +14,7 @@ Usage:
 - [API Version](#api-version)
 - [Transactions](#transactions)
 - [Fetch Transactions](#fetch-transactions)
+- [Refund Transactions](#refund-transactions)
 - [Update Schedules](#update-schedule)
 - [Payment Information Vault](#payment-information-vault)
 - [Merchant Application Status](#merchant-applications-status)
@@ -462,6 +463,48 @@ card[expyear]: 23
 card[cvv]: 1114
 ```
 
+
+
+## Fetch-Transactions
+
+    GET https://api.cornerstone.cc/v1/transactions
+
+Fetch a list of transactions, according to a given filter.
+
+### Parameters
+
+Name | Usage
+----:| -----
+range          | Filters by date or date range. Format: `12/31/1999` or `01/31/1999-12/31/1999` (optional). If left empty, this turns into today's date. To get all transactions, enter `*`. Note that this is slow and it's recommended not to use in a production environment, and instead a range should be used.
+amount         | Dollar amount. We try to determine what you mean automatically, so `13`, `13.00`, `$13`, and `13 dollars` all register as $13.00 USD. (optional)
+firstname      | Filter by customer's first name (optional)
+lastname       | Or customer's last name (optional)
+email 	       | Or customer's email (optional)
+customerid     | Or customer ID (optional) 
+payment_type[] | Can be a combination of `amex`, `discover`, `visa`, `mastercard`, and `check` (optional)
+merchant       | Filter by sub-merchant name (optional)
+failed         | Display declined transactions instead of approved transactions (optional)
+scheduled      | Display scheduled transactions instead of approved or declined (optional)
+show_test      | Display test transactions (optional)
+trans_id       | Fetch a singe transaction by ID. (optional)
+custom[]       | Filter by any custom fields that may be present on the transaction (optional)
+include_gid    | Include the transaction ID in the backend gateway with the response (optional)
+
+## Refund Transactions
+
+    DELETE https://api.cornerstone.cc/v1/transactions?id=<id>
+
+Refund a transaction, passing the TransID as the parameter `id`.
+
+### Parameters
+
+Name | Usage
+----:| -----
+id | Cornerstone Transaction ID 
+
+
+### Examples
+
 Approved Refund
 ```json
 HTTP/1.1 200 OK
@@ -469,12 +512,9 @@ HTTP/1.1 200 OK
 {
 	"approved": [
 		{
-			"id": 99999,
-			"merchant": "Thorton Towing",
-			"reason": "Accepted",
-			"amount": 0,
-			"frequency": "once",
-			"startdate": false
+			"refundedTrans": "219677",
+                	"refundRefID": 219749,
+                	"amount": -50
 		}
 	]
 }
@@ -516,57 +556,6 @@ HTTP/1.1 403 Forbidden
 {
         "error": "auth_error",
         "reason": "You are not authorized to refund this transaction."
-}
-```
-
-## Fetch-Transactions
-
-    GET https://api.cornerstone.cc/v1/transactions
-
-Fetch a list of transactions, according to a given filter.
-
-### Parameters
-
-Name | Usage
-----:| -----
-range          | Filters by date or date range. Format: `12/31/1999` or `01/31/1999-12/31/1999` (optional). If left empty, this turns into today's date. To get all transactions, enter `*`. Note that this is slow and it's recommended not to use in a production environment, and instead a range should be used.
-amount         | Dollar amount. We try to determine what you mean automatically, so `13`, `13.00`, `$13`, and `13 dollars` all register as $13.00 USD. (optional)
-firstname      | Filter by customer's first name (optional)
-lastname       | Or customer's last name (optional)
-email 	       | Or customer's email (optional)
-customerid     | Or customer ID (optional) 
-payment_type[] | Can be a combination of `amex`, `discover`, `visa`, `mastercard`, and `check` (optional)
-merchant       | Filter by sub-merchant name (optional)
-failed         | Display declined transactions instead of approved transactions (optional)
-scheduled      | Display scheduled transactions instead of approved or declined (optional)
-show_test      | Display test transactions (optional)
-trans_id       | Fetch a singe transaction by ID. (optional)
-custom[]       | Filter by any custom fields that may be present on the transaction (optional)
-include_gid    | Include the transaction ID in the backend gateway with the response (optional)
-
-## Refund Transactions
-
-    DELETE https://api.cornerstone.cc/v1/transactions?id=<id>
-
-Refund a transaction, passing the TransID as the parameter `id`.
-
-### Parameters
-
-Name | Usage
-----:| -----
-id | Cornerstone Transaction ID 
-
-```json
-HTTP/1.1 200 OK
-
-{
-	"approved": [
-		{
-			"refundedTrans": "219677",
-                	"refundRefID": 219749,
-                	"amount": -50
-		}
-	]
 }
 ```
 
