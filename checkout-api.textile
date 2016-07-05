@@ -27,7 +27,6 @@ Please note that even though Stage 1 of a request is often included on a merchan
 h3. Stage 1
 
 |_. Name    |_. Description |_. Required? |
-| name      | Name of the cart item. Right now this means very little to a simple request. | Required |
 | amount    | US Dollar amount for the transaction | Required |
 | merchant  | Merchant name | Only required if different than the merchant/site name given in the URL |
 | recurring | Can be @once@, @weekly@, @monthly@, @quarterly@, and @yearly@ | |
@@ -39,6 +38,7 @@ h3. Stage 1
 | copy_to   | A comma or space separated list of email addresses to CC on the merchant receipt | |
 | fee       | A special field allowing a fee to be added. See 'Fee' under 'Usage' below. | |
 | items[]   | @items[]@ can be used as many times as you would like for a simple shopping cart ||
+| name      | Name of the cart item. Right now this means very little to a simple request. |  |
 | display_login | Set this to show logins on simple checkouts ||
 | decline_callback | When set to 0 does not redirect on decline ||
 | callback  | A redirect URL for after a transaction is approved/declined ||
