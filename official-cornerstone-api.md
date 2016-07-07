@@ -1,4 +1,4 @@
-The Cornerstone Dashboard API
+Merchant Quarry API
 =============================
 
 Introduction:
