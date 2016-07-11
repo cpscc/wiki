@@ -274,7 +274,7 @@ On the way back, our system appends details such as the transaction ID (on an ap
 the status of the transaction (approved or declined), and if the transaction was declined,
 a message containing the reason for a decline.
 
-<pre><code>ON APPROVAL: https://example.com/return_transaction?token=438271&trans_id=123&status=Approved
+<pre><code>ON APPROVAL: https://example.com/return_transaction?token=438271&trans_id=123&status=Approved&amount=2.00
 ON DECLINE: https://example.com/return_transaction?token=438271&status=Declined&msg=Invalid%20card%20number</code></pre>
 
 If you need to customize the name of the return parameters, you can add the following parameters
