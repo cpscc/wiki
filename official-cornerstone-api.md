@@ -157,9 +157,10 @@ recurring | (optional) Allows you to specify a recurring cycle. Values available
 start-date | (optional) Used to schedule a transaction in the future. Must be formatted: `mm/dd/yyyy`, e.g. `12/31/1999`. If the day of the month is above 30 (as it is in our example), it is silently shifted down to 30.
 memo | (optional) Can contain any string of text.
 vault | Vault the payment info -- this results in a 0 transaction record, where no authorization or capture has been made on for the payment
-card[] | contains: `card[number]`, `card[expmonth]`, `card[expyear]` and `card[cvv]`
-check[] | only required if `card[]` is missing, contains: `check[aba]`, `check[account]` and `check[type]`. `type` can be one of `savings`, `checking`, `bsave`or `bcheck`.
+card[] | Contains: `card[number]`, `card[expmonth]`, `card[expyear]` and `card[cvv]`
+check[] | Only required if `card[]` or `token` is missing, contains: `check[aba]`, `check[account]` and `check[type]`. `type` can be one of `savings`, `checking`, `bsave`or `bcheck`.
 customer[] | Customer billing information. `customer[firstname]`, `customer[lastname]`, and `customer[email]` are required.
+token | Only required if `card[]` or `check[]` is missing. A valid token, as returned by a transaction/vault process. For example, `check.1234.1234.NxDUy`.
 
 For more details, see "Parameter Details" below.
 
@@ -348,7 +349,7 @@ HTTP/1.1 400 Bad Request
 
 #### card[]
 
-(required if `check` is missing)
+(required if `check` or `token` is missing)
 
 * `card[number]` Credit card number. Must contain 15-16 digits.
 * `card[expmonth]` Credit card expiration month. Must contain 2 digits between 1 and 12.
@@ -357,11 +358,18 @@ HTTP/1.1 400 Bad Request
 
 #### check[] - EFT / E-check
 
-(required if `card` is missing)
+(required if `card` or `token` is missing)
 
 * `check[aba]` 9-digit bank routing number.
 * `check[account]` Bank account number.
 * `check[type]` Bank account type. Can be one of: `savings`, `checking`, `bsave` (business savings) or `bcheck` (business checking).
+
+#### token
+
+(required if `card` or `token` is missing)
+
+This will contain the token, as returned by a previous transaction POST or GET. A valid token is in the following formats: `<type>.<number>.<expiration>.<id>`, for instance `visa.1111.1221.NTAwMzc1MC0yMw==`, `check.1234.1234.NxDUy`, and so on. Valid prefixes are `check`, `amex`, `visa`, `discover`, `mastercard`, and `master` (legacy). There are also the special purpose tokens, `papercheck` and `cash`.
+
 
 #### customer[]
 
