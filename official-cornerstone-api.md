@@ -518,13 +518,11 @@ Approved Refund
 HTTP/1.1 200 OK
 
 {
-	"approved": [
-		{
-			"refundedTrans": "219677",
-                	"refundRefID": 219749,
-                	"amount": -50
-		}
-	]
+	"approved": {
+		"refundedTrans": "219677",
+		"refundRefID": 219749,
+		"amount": -50
+	}
 }
 ```
 
