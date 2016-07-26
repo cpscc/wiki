@@ -509,6 +509,7 @@ Refund a transaction, passing the TransID as the parameter `id`.
 Name | Usage
 ----:| -----
 id | Cornerstone Transaction ID 
+amount | (not required) Amount, if different than the original authorization amount of the transaction.
 
 
 ### Examples
