@@ -195,7 +195,9 @@ HTTP/1.1 200 OK
             "frequency": "once",
             "startdate": false,
             "test": false,
-            "token": "visa.1111.1221.NTAwMzc1MC0yMw=="
+            "token": "visa.1111.1225.NTAwODc3Ni03MjI=",
+            "cvv_match": "M",
+            "avs_match": "Y"
         }
     ]
 }
@@ -411,6 +413,50 @@ So, for example, given your organization is called "Orient Missions", you could 
 Or, it is possible to simply used an entirely random string:
 
     tg7cVcPg[u5a+AX/rG33uGEGzff6LdPyoFbOeTn+%d2+pBGy0E@mdEtf]%zidZzV7di6_3|mM3MJ!jlwn7-4NMCA ... (truncated)
+
+
+### AVS and CVV response
+
+#### `avs_match` (address verification response code)
+
+The Address Verification System (AVS) helps identify suspicious activity, by verifying the address. If an address is present in a request, Cornerstone submits the address to financial institutions (issuing banks), who will verify the address against their records, and return an AVS response code. The AVS codes we support are as follows:
+
+Code | Description
+---- | -------
+" " | (Blank response) Service Not Supported
+0 | AVS data not provided
+A | Street address matches, Zip Code does not
+B | Postal code not verified due to incompatible formats
+C | Street address and postal code not verified due to incompatible formats
+D | Street address and postal code match *(international)*
+E | Error: AVS data is invalid
+G | Non-U.S. issuing bank does not support AVS *(international)*
+I | Address information not verified by issuer *(international)*
+M | Customer Name, Billing Address and Zip match *(international)*
+N | Neither street address nor Zip code match
+P | Street address not verified due to incompatible format *(international)*
+R | Retry: issuer's system unavailable or timed-out
+S | U.S. issuing bank does not support AVS
+T | Street address does not match, but 9-digit Zip code matches
+U | Address information is unavailable
+W | 9-digit Zip matches, street address does not
+X | Street address and 9-digit Zip match
+Y | Street address and 5-digit Zip match
+Z | 5-digit Zip matches, street address does not
+
+#### `cvv_match` (card security response code)
+
+The credit card identification code, or "Card Code" is a three- or four-digit security code printed on the back (or, in the case of American Express, front) of credit cards. This can be used to verify that a customer is in posession of the card being transacted. Cornerstone verifies this number with the issuing bank, and returns a CVV match code. The supported codes are as follows: 
+
+Code | Description
+---- | -------
+0 | CVV/CID not provided
+M | Match
+N | No match
+P | Not processed
+S | Data not present
+U | Issuer unable to process request
+Y | Card Code Matches (Amex Only)
 
 
 ## Update-Schedule
