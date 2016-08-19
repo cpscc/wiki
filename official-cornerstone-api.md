@@ -160,7 +160,7 @@ memo[] | (optional) **Array** Instead of a string, the memo can be split into an
 vault | **Boolean** Vault the payment info -- this results in a 0 transaction record, where no authorization or capture has been made on for the payment
 card[] | **Array** Contains: `card[number]`, `card[expmonth]`, `card[expyear]` and `card[cvv]`
 check[] | **Array** Only required if `card[]` or `token` is missing, contains: `check[aba]`, `check[account]` and `check[type]`. `type` can be one of `savings`, `checking`, `bsave`or `bcheck`.
-customer[] | **Array** Customer billing information. `customer[firstname]`, `customer[lastname]`, and `customer[email]` are required.
+customer[] | **Array** Customer billing information. `customer[firstname]`, `customer[lastname]` are required, address fields can be required by request.
 token | **String** Only required if `card[]` or `check[]` is missing. A valid token, as returned by a transaction/vault process. For example, `check.1234.1234.NxDUy`.
 
 For more details, see "Parameter Details" below.
@@ -376,10 +376,11 @@ This will contain the token, as returned by a previous transaction POST or GET. 
 
 #### customer[]
 
-The following parameters are required and must contain at least two charactars: `customer[firstname]`, `customer[lastname]`, and `customer[email]`. Note: A valid email address for the cardholder. This will be used for receipts, and possibly identification, later.
+The following parameters are required and must contain at least two charactars: `customer[firstname]`, `customer[lastname]`.
 
 The following parameters make up the billing address and may or may not be required depending on the setting for the merchant.
 
+* `customer[email]`
 * `customer[address]`: Address line 1
 * `customer[company]`: Address line 2
 * `customer[city]`:
