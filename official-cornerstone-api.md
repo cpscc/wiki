@@ -150,17 +150,18 @@ routing | 031100393 | 12345678901234
 
 Name | Usage
 ---- | -----
-request_id | (optional, recommended) A unique id string (max. length 255) sent along with the transaction request. If the transaction request is re-sent, the `request_id` will be checked for uniqueness, and if it is found, a `request_id_conflict` error will be sent with a `400` response code. Please see the notes and examples on this below.
-amount | Amount in US dollars. We try to determine what you mean automatically, so `13`, `13.00`, `$13`, and `13 dollars` all register as $13.00 USD.
-merchant | (optional) If the transaction is being charged to another merchant or a sub-account, it is specified here.
-recurring | (optional) Allows you to specify a recurring cycle. Values available: `once` (default), `weekly`, `monthly`, `quarterly`, or `yearly`. Without `startdate` set, all monthly transactions made on the 13th will fall on the 13th of the next month, and so on.
-start-date | (optional) Used to schedule a transaction in the future. Must be formatted: `mm/dd/yyyy`, e.g. `12/31/1999`. If the day of the month is above 30 (as it is in our example), it is silently shifted down to 30.
-memo | (optional) Can contain any string of text.
-vault | Vault the payment info -- this results in a 0 transaction record, where no authorization or capture has been made on for the payment
-card[] | Contains: `card[number]`, `card[expmonth]`, `card[expyear]` and `card[cvv]`
-check[] | Only required if `card[]` or `token` is missing, contains: `check[aba]`, `check[account]` and `check[type]`. `type` can be one of `savings`, `checking`, `bsave`or `bcheck`.
-customer[] | Customer billing information. `customer[firstname]`, `customer[lastname]`, and `customer[email]` are required.
-token | Only required if `card[]` or `check[]` is missing. A valid token, as returned by a transaction/vault process. For example, `check.1234.1234.NxDUy`.
+request_id | (optional, recommended) **Numeric** A unique id string (max. length 255) sent along with the transaction request. If the transaction request is re-sent, the `request_id` will be checked for uniqueness, and if it is found, a `request_id_conflict` error will be sent with a `400` response code. Please see the notes and examples on this below.
+amount | **String** Amount in US dollars. We try to determine what you mean automatically, so `13`, `13.00`, `$13`, and `13 dollars` all register as $13.00 USD.
+merchant | (optional) **String** If the transaction is being charged to another merchant or a sub-account, it is specified here.
+recurring | (optional) **String** Allows you to specify a recurring cycle. Values available: `once` (default), `weekly`, `monthly`, `quarterly`, or `yearly`. Without `startdate` set, all monthly transactions made on the 13th will fall on the 13th of the next month, and so on.
+start-date | (optional) **String** Used to schedule a transaction in the future. Must be formatted: `mm/dd/yyyy`, e.g. `12/31/1999`. If the day of the month is above 30 (as it is in our example), it is silently shifted down to 30.
+memo | (optional) **String** Any string of text for reporting.
+memo[] | (optional) **Array** Instead of a string, the memo can be split into an array , for example `memo[shoe_size]=12&memo[shoe_color]=red`.
+vault | **Boolean** Vault the payment info -- this results in a 0 transaction record, where no authorization or capture has been made on for the payment
+card[] | **Array** Contains: `card[number]`, `card[expmonth]`, `card[expyear]` and `card[cvv]`
+check[] | **Array** Only required if `card[]` or `token` is missing, contains: `check[aba]`, `check[account]` and `check[type]`. `type` can be one of `savings`, `checking`, `bsave`or `bcheck`.
+customer[] | **Array** Customer billing information. `customer[firstname]`, `customer[lastname]`, and `customer[email]` are required.
+token | **String** Only required if `card[]` or `check[]` is missing. A valid token, as returned by a transaction/vault process. For example, `check.1234.1234.NxDUy`.
 
 For more details, see "Parameter Details" below.
 
