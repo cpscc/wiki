@@ -160,7 +160,7 @@ memo[] | (optional) **Array** Instead of a string, the memo can be split into an
 vault | **Boolean** Vault the payment info -- this results in a 0 transaction record, where no authorization or capture has been made on for the payment
 card[] | **Array** Contains: `card[number]`, `card[expmonth]`, `card[expyear]` and `card[cvv]`
 check[] | **Array** Only required if `card[]` or `token` is missing, contains: `check[aba]`, `check[account]` and `check[type]`. `type` can be one of `savings`, `checking`, `bsave`or `bcheck`.
-customer[] | **Array** Customer billing information. `customer[firstname]`, `customer[lastname]` are required, address fields can be required by request.
+customer[] | **Array** Customer address and shipping information. Whether or not these fields are required are based on your AVS settings, however usually all of the fields are optional, but you will receive better rates when these fields are included and teh address validates. Contains: <br> customer[firstname] <br> customer[lastname] <br> customer[address] <br> customer[state] <br> customer[zip] <br> customer[country] <br> customer[phone] <br> customer[comment] <br> customer[shipping][firstname] <br> customer[shipping][lastname] <br> customer[shipping][address] <br> customer[shipping][state] <br> customer[shipping][zip] <br> customer[shipping][country] <br> customer[shipping][phone]
 token | **String** Only required if `card[]` or `check[]` is missing. A valid token, as returned by a transaction/vault process. For example, `check.1234.1234.NxDUy`.
 
 For more details, see "Parameter Details" below.
