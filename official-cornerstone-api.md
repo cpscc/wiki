@@ -543,7 +543,7 @@ failed         | Display declined transactions instead of approved transactions 
 scheduled      | Display scheduled transactions instead of approved or declined (optional)
 show_test      | Display test transactions (optional)
 trans_id       | Fetch a singe transaction by ID. (optional)
-custom[]       | Filter by any custom fields that may be present on the transaction (optional)
+custom[]       | Filter by any custom (as sent in **`memo[]`** in a transaction POST) fields that may be present on the transaction (optional)
 include_gid    | Include the transaction ID in the backend gateway with the response (optional)
 
 ## Refund Transactions
