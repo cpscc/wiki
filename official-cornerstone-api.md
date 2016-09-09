@@ -151,7 +151,7 @@ routing | 031100393 | 12345678901234
 Name | Usage
 ---- | -----
 request_id | (optional, recommended) **Numeric** A unique id string (max. length 255) sent along with the transaction request. If the transaction request is re-sent, the `request_id` will be checked for uniqueness, and if it is found, a `request_id_conflict` error will be sent with a `400` response code. Please see the notes and examples on this below.
-customer[ip] | (optional, recommened) IP of the customer connected to your integration. This is used for risk checking and rate limiting. Only include if it makes sense for your situation. For a call center, for instance, this will not be necessary, but for a web checkout it  reduces risk and improves security.
+customer[ip] | (optional, recommened) IP address of the customer connected to your integration. This is used for risk checking and rate limiting. Only include if it makes sense for your situation. For a call center, for instance, this will not be necessary, but for a web checkout it  reduces risk and improves security.
 customer[agent] | (optional, recommened) [User agent](https://en.wikipedia.org/wiki/User_agent) (web browser/OS) of the client connected to your integration. This is used for risk checking and rate limiting. Only include if it makes sense for your situation. For a call center, for instance, this will not be necessary, but for a web checkout it reduces risk and improves security.
 amount | **String** Amount in US dollars. We try to determine what you mean automatically, so `13`, `13.00`, `$13`, and `13 dollars` all register as $13.00 USD.
 merchant | (optional) **String** If the transaction is being charged to another merchant or a sub-account, it is specified here.
