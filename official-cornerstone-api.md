@@ -48,9 +48,17 @@ There is also a legacy sandbox endpoint, which will be completely removed within
 
 ## Authentication
 
-Authentication is provided by [HTTP Basic Authentication](http://tools.ietf.org/html/rfc2617#section-2), using a provided API client ID and client key. With the [curl](http://curl.haxx.se/) utility, it looks something line this:
+Authentication is provided by [HTTP Basic Authentication](http://tools.ietf.org/html/rfc2617#section-2), using an API client id, and client key, which Cornerstone provides. These credentials are *not* sent in the body of the request, but instead in a header. For exact details on how to use Basic Authentication, you will need to refer to the documentation of your HTTP library. In the end, no matter what tools or library you use to get there, basic auth ends up sending a header that looks something like the following:
+
+    Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l
+
+If your library does not include an implementation of basic auth, Wikipedia has a helpful section explaining [how to manually create the header](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side) (it's about 3 steps).
+
+With the [curl](http://curl.haxx.se/) utility, it looks something line this:
 
     $ curl -i -u <client_id>:<client_key> <resource_url>
+    
+[Curl](http://curl.haxx.se/) is a great utility you can use for debugging outside of your language, in order to narrow down any issues outside of possible complications created by your language or library. This way you can ensure a request works by itself, and work backwards to exactly what is causing problems in an integration.
 
 ## Parameters
 
