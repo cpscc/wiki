@@ -22,7 +22,7 @@ Usage:
 
 # Introduction 
 
-The Cornerstone API is a [REST](http://en.wikipedia.org/wiki/REST)-like API secured with SSL that accepts request parameters as HTTP GET and POST fields ([x-www-form-urlencoded](https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1)), and returns a [JSON](http://en.wikipedia.org/wiki/JSON) response. 
+The Cornerstone API is a [REST](http://en.wikipedia.org/wiki/REST)-like API secured with TLS/HTTPS and accepts request parameters as HTTP GET and POST fields ([x-www-form-urlencoded](https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1), [example](http://php.net/manual/en/function.http-build-query.php#refsect1-function.http-build-query-examples)), and returns a [JSON](http://en.wikipedia.org/wiki/JSON) response. This API attempts to greatly simplify the integration process over many other payment APIs.
 
 <!--
 Inspiration for API:
