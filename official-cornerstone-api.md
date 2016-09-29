@@ -22,7 +22,7 @@ Usage:
 
 # Introduction 
 
-The Cornerstone API is a [REST](http://en.wikipedia.org/wiki/REST) API secured with SSL that accepts parameters as HTTP GET and POST fields, and returns information as [JSON](http://en.wikipedia.org/wiki/JSON). 
+The Cornerstone API is a [REST](http://en.wikipedia.org/wiki/REST)-like API secured with SSL that accepts request parameters as HTTP GET and POST fields ([x-www-form-urlencoded](https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1)), and returns a [JSON](http://en.wikipedia.org/wiki/JSON) response. 
 
 <!--
 Inspiration for API:
