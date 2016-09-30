@@ -369,7 +369,7 @@ HTTP/1.1 400 Bad Request
 * `card[number]` Credit card number. Must contain 15-16 digits.
 * `card[expmonth]` Credit card expiration month. Must contain 2 digits between 1 and 12.
 * `card[expyear]` Credit card expiration year. Must contain 2 digits, later than the current year.
-* `card[cvv]` Card security code (CVV/CVC). Must contain 3-4 digits.
+* `card[cvv]` Card security code (CVV/CVC). If present, must contain 3-4 digits. (optional based on your settings)
 
 #### check[] - EFT / E-check
 
