@@ -554,7 +554,8 @@ merchant       | Filter by sub-merchant name (optional)
 failed         | Display declined transactions instead of approved transactions (optional)
 scheduled      | Display scheduled transactions instead of approved or declined (optional)
 show_test      | Display test transactions (optional)
-trans_id       | Fetch a singe transaction by ID. (optional)
+trans_id       | Fetch a transaction by ID (optional)
+request_id     | Fetch a transaction by `request_id` (optional
 custom[]<br>memo[] | Filter by any custom (as sent in **`memo[]`** in a transaction POST) fields that may be present on the transaction (optional)
 include_gid    | Include the transaction ID in the backend gateway with the response (optional)
 
