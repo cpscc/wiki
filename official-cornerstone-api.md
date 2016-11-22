@@ -493,7 +493,7 @@ startdate | (optional) Used to schedule first occurence of transaction if none h
 token | (optional) Used to update the payment token for a transaction.  Payment tokens are returned when a recurring transaction is created or future payment scheduled.
 card[] | (optional) Used to update card information for a transaction.
 check[] | (optional) Used to update check information for a transaction.
-mem0[] | (optional) Used to update Memo field for Transaction.
+memo[] | (optional) Used to update Memo field for Transaction.
 
 #### card[] - Credit Card
 * `card[number]` Credit card number. Must contain 15-16 digits.
