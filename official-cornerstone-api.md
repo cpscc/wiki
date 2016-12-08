@@ -150,7 +150,7 @@ Accept: */*
 Content-Length: 177
 Content-Type: application/x-www-form-urlencoded
 ```
-```http
+```x-www-form-urlencoded
 customer[email]=angusm@example.com&customer[firstname]=Angus&customer[lastname]=MacGyver&card[number]=4111111111111111&card[expmonth]=12&card[expyear]=23&card[cvv]=1114
 ```
 
