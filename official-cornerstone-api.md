@@ -141,13 +141,16 @@ This generates a raw HTTP request that looking something like
 
 ```http
 POST /v1/transactions HTTP/1.1
+```
+```yaml
 Host: api.cornerstone.cc
 Authorization: Basic Y2xpZW50XzR0ZEdXR09YTG9vUlZIOXpsU0JGOmtleV9Oem9EblhiQUtMWjZGbE0yZGlOTXk2aUZ6
 User-Agent: curl/7.49.1
 Accept: */*
 Content-Length: 177
 Content-Type: application/x-www-form-urlencoded
-
+```
+```http
 customer[email]=angusm@example.com&customer[firstname]=Angus&customer[lastname]=MacGyver&card[number]=4111111111111111&card[expmonth]=12&card[expyear]=23&card[cvv]=1114
 ```
 
@@ -155,6 +158,8 @@ And the response from the Cornerstone API will return something along the lines 
 
 ```http
 HTTP/1.1 200 OK
+```
+```yaml
 Date: Thu, 08 Dec 2016 17:35:16 GMT
 Server: cornerstone-httpd-0.9
 X-Quarry: v1 895cb85d493fe399b685d3e256268786f5735a4b onyx us.central
@@ -164,7 +169,8 @@ Pragma: no-cache
 Content-Length: 296
 Connection: close
 Content-Type: application/json
-
+```
+```json
 {
     "approved": [
         {
