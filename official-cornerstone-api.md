@@ -85,7 +85,7 @@ Other requests are placed in the body of the request as POST parameters:
 
 ## Errors
 
-There are three types of errors our API will give you:
+Here are example errors the API will respond with:
 
 - `401``auth_error`: Thrown in two circumstances. When client ID and key are missing or unmatched, and when the client doesn't have permissions to perform certain API actions.
 - `400``bad_request`: When arguments are missing or do not match a specific pattern.
