@@ -8,6 +8,7 @@ Introduction:
 - [Authenication](#authentication)
 - [HTTP Verbs](#http-verbs)
 - [Errors](#errors)
+- [Raw HTTP and cURL Examples](#raw-http-and-curl-examples)
 
 Usage:
 
@@ -118,7 +119,75 @@ All errors return as a Json object, and contain at least two properties: `error`
 }
 ```
 
+## Raw HTTP and cURL Examples
+
+For debugging, it's important to be able to create a valid, working example to compare with. We will provide this example using the shell [cURL](https://curl.haxx.se/) utility, and the raw request this will ultimately create (which you will be recreating in your own language and environment). There is also a basic [PHP example](https://github.com/cpscc/wiki/blob/master/example.php) using cURL. A basic transaction process can be perfomed with cURL using a shell command similar to below (this is a working example):
+
+```sh
+curl -iv "https://api.cornerstone.cc/v1/transactions" \
+    -X POST \
+    -u client_4tdGWGOXLooRVH9zlSBF:key_NzoDnXbAKLZ6FlM2diNMy6iFz \
+    -d "amount=7" \
+    -d "customer[email]=angusm@example.com" \
+    -d "customer[firstname]=Angus" \
+    -d "customer[lastname]=MacGyver" \
+    -d "card[number]=4111111111111111" \
+    -d "card[expmonth]=12" \
+    -d "card[expyear]=23" \
+    -d "card[cvv]=1114"
+```
+
+This generates a raw HTTP request that looking something like
+
+```http
+POST /v1/transactions HTTP/1.1
+Host: api.cornerstone.cc
+Authorization: Basic Y2xpZW50XzR0ZEdXR09YTG9vUlZIOXpsU0JGOmtleV9Oem9EblhiQUtMWjZGbE0yZGlOTXk2aUZ6
+User-Agent: curl/7.49.1
+Accept: */*
+Content-Length: 177
+Content-Type: application/x-www-form-urlencoded
+
+customer[email]=angusm@example.com&customer[firstname]=Angus&customer[lastname]=MacGyver&card[number]=4111111111111111&card[expmonth]=12&card[expyear]=23&card[cvv]=1114
+```
+
+And the response from the Cornerstone API will return something along the lines of 
+
+```yaml
+HTTP/1.1 200 OK
+Date: Thu, 08 Dec 2016 17:35:16 GMT
+Server: cornerstone-httpd-0.9
+X-Quarry: v1 895cb85d493fe399b685d3e256268786f5735a4b onyx us.central
+Expires: Mon, 26 Jul 1997 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate
+Pragma: no-cache
+Content-Length: 296
+Connection: close
+Content-Type: application/json
+```
+
+```json
+{
+    "approved": [
+        {
+            "id": 823201,
+            "merchant": "gearbox",
+            "reason": "approved",
+            "amount": "7",
+            "frequency": "once",
+            "startdate": false,
+            "test": true,
+            "token": "visa.1111.1223.YWM5MGM0MDk4ZjNlNDg1ZDkwODFiNWEwNTk2ZWVjMjY=",
+            "cvv_match": "P",
+            "avs_match": "Y"
+        }
+    ]
+}
+```
+
 # API Version
+
+Use this to do a quick sanity check to make sure you can connect to our API (this is a simple GET request with no parameters and no need for authentication).
 
     GET https://api.cornerstone.cc/v1/
 
