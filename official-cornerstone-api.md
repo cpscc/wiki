@@ -153,7 +153,7 @@ customer[email]=angusm@example.com&customer[firstname]=Angus&customer[lastname]=
 
 And the response from the Cornerstone API will return something along the lines of 
 
-```yaml
+```http
 HTTP/1.1 200 OK
 Date: Thu, 08 Dec 2016 17:35:16 GMT
 Server: cornerstone-httpd-0.9
@@ -164,9 +164,7 @@ Pragma: no-cache
 Content-Length: 296
 Connection: close
 Content-Type: application/json
-```
 
-```json
 {
     "approved": [
         {
