@@ -532,6 +532,25 @@ card[expyear]: 23
 card[cvv]: 1114
 ```
 
+```json
+{
+    "approved": [
+        {
+            "id": 822997,
+            "merchant": "gearbox",
+            "reason": "approved",
+            "amount": 0,
+            "frequency": "once",
+            "startdate": false,
+            "test": false,
+            "token": "amex.0002.1223.YTNkOGY2YThkMGE5NGFmYWEyMDRiMTVjZjJmNGNiYzE=",
+            "cvv_match": null,
+            "avs_match": null
+        }
+    ]
+}
+```
+
 
 
 ## Fetch-Transactions
