@@ -9,6 +9,7 @@ Introduction:
 - [HTTP Verbs](#http-verbs)
 - [Errors](#errors)
 - [Raw HTTP and cURL Examples](#raw-http-and-curl-examples)
+- [Language-Specific Examples](#language-specific-examples)
 
 Usage:
 
@@ -121,7 +122,7 @@ All errors return as a Json object, and contain at least two properties: `error`
 
 ## Raw HTTP and cURL Examples
 
-For debugging, it's important to be able to create a valid, working example to compare with. We will provide this example using the shell [cURL](https://curl.haxx.se/) utility, and the raw request this will ultimately create (which you will be recreating in your own language and environment). There is also a basic [PHP example](https://github.com/cpscc/wiki/blob/master/example.php) using cURL. A basic transaction process can be perfomed with cURL using a shell command similar to below (this is a working example):
+For debugging, it's important to be able to create a valid, working example to compare with. We will provide this example using the shell [cURL](https://curl.haxx.se/) utility, and the raw request this will ultimately create (which you will be recreating in your own language and environment). using cURL. A basic transaction process can be perfomed with cURL using a shell command similar to below (this is a working example):
 
 ```sh
 curl -iv "https://api.cornerstone.cc/v1/transactions" \
@@ -188,6 +189,17 @@ Content-Type: application/json
     ]
 }
 ```
+
+## Language-Specific Examples
+
+To get you started, we also have a few very simple "hello world" examples:
+
+- [C Sharp](https://github.com/cpscc/wiki/blob/master/transact-example.cs)
+- [Ruby](https://github.com/cpscc/wiki/blob/master/transact-example.rb)
+- [PHP](https://github.com/cpscc/wiki/blob/master/transact-example.php)
+
+If your language is not here, let us know, as we may be working on an example for that language.
+
 
 # API Version
 
