@@ -36,7 +36,6 @@ h3. Stage 1
 | memo      | Can be either a simple string, or one or more custom fields. | |
 | copy_to   | A comma or space separated list of email addresses to CC on the merchant receipt | |
 | fee       | A special field allowing a fee to be added. See 'Fee' under 'Usage' below. | |
-| items[]   | @items[]@ can be used as many times as you would like for a simple shopping cart ||
 | name      | Name of the cart item. Right now this means very little to a simple request. |  |
 | display_login | Set this to show logins on simple checkouts ||
 | callback  | A redirect URL for after a transaction is approved/declined ||
@@ -232,22 +231,7 @@ You can use this with radio buttons, checkboxes, or a hidden input (which you ca
 
 h2. Simple Cart (via @items@)
 
-Simple carts can be made using an @items[]@ input:
-
-<pre><code><input type=checkbox name=items[] value="Logo T-shirt (sm): $15">
-<input type=checkbox name=items[] value="Logo T-shirt (lg): $16"></code></pre>
-
-Which would yield a memo along these lines:
-
-<pre><code>Logo T-shirt (sm): $15
-Logo T-shirt (lg): $16</code></pre>
-
-With a total altogether of $31.
-
-h3. Alternate
-
-You could alternatively use multiple @name@ and @amount@ pairs.
-For each @amount[]@ there must be a matching @name[]@.
+A simple shopping cart is possible by turning the item details into an array:
 
 <pre><code><input name=name[0] value="Logo T-shirt (sm)">
 <input name=amount[0] value="$15">
