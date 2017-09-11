@@ -747,10 +747,10 @@ If you need unlinked credit please contact us to request it.** Unlinked credit i
 
 Name | Usage
 ----:| -----
+amount | (required) Credit amount
 card[number] | (required) Credit card number
 card[expmonth] | (required) Credit card expiration month
 card[expyear] | (required) Credit card expiration year
-amount | (not required) Amount, if different than the original authorization amount of the transaction.
 merchant | (not required) If you're API client is enabled for multiple pages, the name of the page the credit is running against.
 
 
