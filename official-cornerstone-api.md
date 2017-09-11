@@ -17,6 +17,7 @@ Usage:
 - [Transactions](#transactions)
 - [Fetch Transactions](#fetch-transactions)
 - [Refund Transactions](#refund-transactions)
+- [Unlinked Credit (not always available)](#unlinked-credit)
 - [Update Schedules](#update-schedule)
 - [Payment Information Vault](#payment-information-vault)
 - [Merchant Application Status](#merchant-applications-status)
@@ -730,6 +731,60 @@ HTTP/1.1 403 Forbidden
 {
         "error": "auth_error",
         "reason": "You are not authorized to refund this transaction."
+}
+```
+
+
+
+## Unlinked Credit
+
+    DELETE https://api.cornerstone.cc/v1/transactions?amount=<amount>&card[number]=<card-number>&card[expmonth]=<expiration-month>&card[expyear]=<expiration-year>
+
+**NOTE: This is not available for most gateways, and the feature requires special paperwork to be enabled.
+If you need unlinked credit please contact us to request it.** Unlinked credit is exactly the same as a refund, but the transaction id is replaced with a card object.
+
+### Parameters
+
+Name | Usage
+----:| -----
+card[number] | (required) Credit card number
+card[expmonth] | (required) Credit card expiration month
+card[expyear] | (required) Credit card expiration year
+amount | (not required) Amount, if different than the original authorization amount of the transaction.
+merchant | (not required) If you're API client is enabled for multiple pages, the name of the page the credit is running against.
+
+
+### Examples
+
+Approved Credit
+```json
+HTTP/1.1 200 OK
+
+{
+	"approved": {
+		"refundRefID": 219749,
+		"amount": -50
+	}
+}
+```
+
+Errors
+
+```json
+HTTP/1.1 501 Not Implemented
+
+{
+        "error": "not_implemented",
+        "reason": "Unlinked credit not supported with gateway"
+}
+```
+
+```json
+HTTP/1.1 404 Bad Request
+
+{
+        "error": "parameter_not_found",
+        "reason": "card[number]"
 }
 ```
 
