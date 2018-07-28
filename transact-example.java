@@ -9,8 +9,20 @@ class CornerstoneTransactionExample {
 		String result = "";
 		
 		String request = 
-			"amount=15&card[number]=4444333322221111&card[expmonth]=12&card[expyear]=23" +
-			"&customer[firstname]=Robert&customer[lastname]=Parr&customer[email]=robertp@example.com";
+		"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+		"<request>" +
+			"<amount>15</amount>" +
+			"<card>" +
+				"<number>4444333322221111</number>" +
+				"<expmonth>12</expmonth>" +
+				"<expyear>23</expyear>" +
+			"</card>" +
+			"<customer>" +
+				"<firstname>Robert</firstname>" +
+				"<lastname>Parr</lastname>" +
+				"<email>robertp@example.com</email>" +
+			"</customer>" +
+		"</request>";
 
 		try {				
 			HttpURLConnection con = (HttpURLConnection) (new URL(url)).openConnection();
@@ -20,6 +32,9 @@ class CornerstoneTransactionExample {
 						
 			con.setRequestProperty("User-Agent", user);
 			con.setRequestProperty("Authorization", "Basic " + encoded);
+			con.setRequestProperty("Accept", "application/xml");
+			con.setRequestProperty("Content-Type", "application/xml");
+
 			con.setRequestMethod("POST");
 			con.setDoOutput(true);
 			
