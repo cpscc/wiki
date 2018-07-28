@@ -8,6 +8,8 @@ class CornerstoneTransactionExample {
 		String key = "key_RdutJGqI50YIwjehGtHBOe1Uu";
 		String result = "";
 		
+		// you will likely want to use something like jaxb or xstream
+		// to create xml and possibly write it to the stream
 		String request = 
 		"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
 		"<request>" +
