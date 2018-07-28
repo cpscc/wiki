@@ -28,12 +28,7 @@ class CornerstoneTransactionExample {
 			out.flush();
 			out.close();
 			
-			InputStream stream;
-			if (con.getResponseCode() < 400) {
-				stream = con.getInputStream();
-			} else {
-				stream = con.getErrorStream();
-			}
+			InputStream stream = con.getResponseCode() < 400 ? con.getInputStream() : con.getErrorStream();
 						
 			BufferedReader buf = new BufferedReader(new InputStreamReader(stream));
 			
