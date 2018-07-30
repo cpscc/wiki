@@ -194,11 +194,12 @@ Content-Type: application/json
 
 ## Language-Specific Examples
 
-To get you started, we also have a few very simple "hello world" examples:
+To get you started, we also have a few very simple transaction examples to get you started:
 
 - [C Sharp](https://github.com/cpscc/wiki/blob/master/transact-example.cs)
-- [Ruby](https://github.com/cpscc/wiki/blob/master/transact-example.rb)
+- [Java](https://github.com/cpscc/wiki/blob/master/transact-example.java)
 - [PHP](https://github.com/cpscc/wiki/blob/master/transact-example.php)
+- [Ruby](https://github.com/cpscc/wiki/blob/master/transact-example.rb)
 
 If your language is not here, let us know, as we may be working on an example for that language.
 
