@@ -1,0 +1,15 @@
+{
+    "name": "cornerstone/quarry",
+    "authors": [
+        {
+            "name": "Brian Zick",
+            "email": "brian@zick.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Cornerstone\\Quarry\\": "src/"
+        }
+    },
+    "require": {}
+}
