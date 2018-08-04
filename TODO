@@ -1,5 +1,30 @@
 TODO
 
-[x]  Make basic "hello world" example for v1
-[ ]  Create a simple "build" script that makes
-     several example types
+[x]  Basic "hello world" example for v1
+[ ]  simple "build" script that makes raw requests for
+     [x] x-www-form-urlencoded
+     [ ] json
+     [ ] xml
+
+[ ] example that uses basic auth
+[ ] example full transaction
+[ ] render a .md file filling in {{ example.whatever }}
+    with the request examples
+
+[ ] copy styling from chris's api docs
+
+[ ] make examples for everything in current api docs
+
+[ ] make simple simple sdk examples
+    [ ] php
+    [ ] ruby
+    [ ] python 2
+    [ ] python 3
+    [ ] c#
+    [ ] java
+
+[ ] create make target for "test-raw-json", etc
+    that actually runs each example and makes asserts on
+    the response
+
+[ ] start making v2 api examples that detail out the intended interface
