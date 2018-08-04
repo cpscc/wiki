@@ -1,2 +1,6 @@
 #!/usr/bin/php
 <?php
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+$spec = new \Cornerstone\Quarry\Spec;
+$spec->cli($argc, $argv);
