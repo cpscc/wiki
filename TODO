@@ -1,5 +1,5 @@
 TODO
 
-[ ]  Make basic "hello world" example for v1
+[x]  Make basic "hello world" example for v1
 [ ]  Create a simple "build" script that makes
      several example types
