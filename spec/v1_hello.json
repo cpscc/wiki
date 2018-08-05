@@ -1,6 +1,6 @@
 {
     "method": "GET",
-    "path": "/v1/",
+    "path": "",
     "assert": [
         { "http.status =": "200" }
     ]

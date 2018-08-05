@@ -4,7 +4,7 @@ use Cornerstone\Quarry\Targets\RawForm;
 
 class Compile
 {
-    function cli($args)
+    function cli($args, $config)
     {
         if ($args) {
             $files = [$args[0]];
@@ -14,7 +14,7 @@ class Compile
 
         foreach ($files as $f) {
             $f = json_decode(file_get_contents($f), 1);
-            RawForm::convert($f);
+            RawForm::convert($f, $config);
         }
     }
 }
