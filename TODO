@@ -1,8 +1,8 @@
 TODO
 
 [x]  Basic "hello world" example for v1
-[ ]  Simple default authentication storage
-[ ]  store work from hello world example in build/work/
+[x]  Simple default authentication storage
+[x]  store work from hello world example in build/work/
 [ ]  simple "build" script that makes raw requests for
      [x] x-www-form-urlencoded
      [ ] json
