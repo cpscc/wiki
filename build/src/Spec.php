@@ -7,7 +7,7 @@ class Spec
     {
         $script = array_shift($argv);
         $command = array_shift($argv);
-        $config = parse_ini_file('../defaults.ini');
+        $config = parse_ini_file('../defaults.ini', true);
         // TODO: replace defaults with ENV if present
 
         if ($argc < 2) {

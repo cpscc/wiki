@@ -5,6 +5,7 @@ class RawForm
 {
     function convert(array $json, array $config)
     {
+        $config = $config[$json['version']];
         echo "$json[method] $config[path]$json[path] HTTP/1.1\n";
         echo "Host: $config[endpoint]\n";
         echo "Accept: application/x-www-form-urlencoded\n";
