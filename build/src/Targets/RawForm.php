@@ -5,14 +5,11 @@ class RawForm
 {
     const name = "raw.x-www-form-urlencoded";
 
-    function convert(array $spec, array $config)
+    function convert(array $spec, array $config, $h)
     {
         $config = $config[$spec['version']];
-        $out = "";
-        $out.= "$spec[method] $config[path]$spec[path] HTTP/1.1\n";
-        $out.= "Host: $config[endpoint]\n";
-        $out.= "Accept: application/x-www-form-urlencoded\n";
-        return $out;
+        fwrite($h, "$spec[method] $config[path]$spec[path] HTTP/1.1\n");
+        fwrite($h, "Host: $config[endpoint]\n");
+        fwrite($h, "Accept: application/x-www-form-urlencoded\n");
     }
 }
-// TODO: use a $handle instead of a string
