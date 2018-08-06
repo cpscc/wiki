@@ -14,6 +14,10 @@ class Compile
 
         foreach ($files as $fname) {
             $f = json_decode(file_get_contents($fname), 1);
+            if (!$f) {
+                echo "ERROR: invalid JSON in $fname\n";
+                exit(1);
+            }
             $handle = fopen(
                 "work/" .
                 pathinfo($fname)['filename'] .
