@@ -20,7 +20,7 @@ class Spec
             (new $class)->cli($argv, $config);
         } else {
             echo "ERROR: unknown sub-command \"$argv[1]\"\n";
-            exit;
+            exit(1);
         }
     }
 }
