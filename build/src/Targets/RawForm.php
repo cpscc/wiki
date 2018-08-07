@@ -13,7 +13,11 @@ class RawForm
         fwrite($h, "Accept: application/x-www-form-urlencoded\n");
 
         if ($spec['body']) {
+            if ($spec['version'] == 'v1') {
+                fwrite($h, "Authentication: basic " . base64_encode("$config[user]:$config[pass]") . "\n");
+            }
             $body = http_build_query($spec['body']);
+
             fwrite($h, "Content-Type: application/x-www-form-urlencoded\n");
             fwrite($h, "Content-Length: " . strlen($body) . "\n\n");
             fwrite($h, $body . "\n");
