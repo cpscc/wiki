@@ -8,8 +8,8 @@ TODO
      [ ] json
      [ ] xml
 
-[ ] example that uses basic auth
-[ ] example full transaction
+[x] example that uses basic auth
+[x] example full transaction
 [ ] render a .md file filling in {{ example.whatever }}
     with the request examples
 
