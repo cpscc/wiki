@@ -1,0 +1,18 @@
+{
+    "version": "v1",
+    "method": "POST",
+    "path": "transaction",
+    "body": {
+        "amount": 1,
+        "card": {
+            "number": "4111111111111111",
+            "expmonth": "12",
+            "expyear": "2022",
+            "cvv": "123"
+        }
+    },
+    "assert": [
+        { "http.status =": "200" }
+    ]
+}
+
