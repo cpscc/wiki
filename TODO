@@ -30,3 +30,5 @@ TODO
     the response
 
 [ ] start making v2 api examples that detail out the intended interface
+
+[ ] create make target "todo" that lists all TODO and XXX instances
