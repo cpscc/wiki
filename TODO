@@ -10,7 +10,7 @@ TODO
 
 [x] example that uses basic auth
 [x] example full transaction
-[ ] render a .md file filling in {{ example.whatever }}
+[ ] render a .md file filling in {% example.whatever %}
     with the request examples
 
 [ ] copy styling from chris's api docs
