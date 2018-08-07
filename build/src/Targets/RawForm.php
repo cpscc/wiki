@@ -10,7 +10,6 @@ class RawForm
         $config = $config[$spec['version']];
         fwrite($h, "$spec[method] $config[path]$spec[path] HTTP/1.1\n");
         fwrite($h, "Host: $config[endpoint]\n");
-        fwrite($h, "Accept: application/x-www-form-urlencoded\n");
 
         if ($spec['body']) {
             if ($spec['version'] == 'v1') {
@@ -18,9 +17,12 @@ class RawForm
             }
             $body = http_build_query($spec['body']);
 
+            fwrite($h, "Accept: application/x-www-form-urlencoded\n");
             fwrite($h, "Content-Type: application/x-www-form-urlencoded\n");
             fwrite($h, "Content-Length: " . strlen($body) . "\n\n");
             fwrite($h, $body . "\n");
+        } else {
+            fwrite($h, "Accept: application/x-www-form-urlencoded\n");
         }
     }
 }
