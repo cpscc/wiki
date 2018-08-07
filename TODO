@@ -25,10 +25,12 @@ TODO
     [ ] c#
     [ ] java
 
+[ ] start making v2 api examples that detail out the intended interface
+
+[ ] create make target for "v1" and "v2"
+
 [ ] create make target for "test-raw-json", etc
     that actually runs each example and makes asserts on
     the response
-
-[ ] start making v2 api examples that detail out the intended interface
 
 [ ] create make target "todo" that lists all TODO and XXX instances
