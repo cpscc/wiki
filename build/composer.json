@@ -11,5 +11,9 @@
             "Cornerstone\\Quarry\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "mustache/mustache": "2.*",
+        "michelf/php-markdown": "1.*",
+        "openlss/lib-array2xml": "*"
+    }
 }
