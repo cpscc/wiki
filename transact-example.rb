@@ -1,15 +1,4 @@
 #!/usr/bin/env ruby
-
-# Sample Code:
-#
-# This sample creates a simple call to the Cornerstone API to create a transaction.
-# client id/key are provided by Cornestone Payment Systems.
-#
-# Credentials for Test Cards
-# Securenet: 4444333322221111 / 12 24 / 123
-# Sage:		 4111111111111111 / 12 24 / 123
-#
-# For the id and key include the entire string give.
 require "net/https"
 require "uri"
 data = {  
