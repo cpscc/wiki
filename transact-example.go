@@ -5,8 +5,8 @@ import (
 	"encoding/xml"
 	"fmt"
 	"net/http"
-	"os"
 	"bufio"
+	"time"
 )
 
 type Memo struct {
@@ -62,16 +62,26 @@ type Request struct {
 }
 
 func main() {
+	url  := "http://api.cornerstone.cc/v1/"
+	user := "sandbox_3xSOjtxSvICXVOKYqbwI"
+	key  := "key_RdutJGqI50YIwjehGtHBOe1Uu"
+	
 	v := &Request{Amount: 15}
 	v.Customer = Customer{FirstName: "Robert", LastName: "Parr", Email: "robertp@example.com"}
 	v.Card = Card{Number: "4444333322221111", Expmonth: "12", Expyear: "23"}
+	reqBody := new(bytes.Buffer)
+	xml.NewEncoder(reqBody).Encode(v)
+	//fmt.Println(reqBody)
 
-	output, _ := xml.MarshalIndent(v, "  ", "    ")
+	client := &http.Client{Timeout: time.Second * 30}	
+	req, _ := http.NewRequest("POST", url, reqBody)
+	req.Header.Add("Content-Type", "application/xml")
+	req.SetBasicAuth(user,key)
 
-	fmt.Fprintf(os.Stdout, bytes.NewReader(output))
-
-	client := &http.Client{}
-	resp, _ := client.Post("http://api.cornerstone.cc/v1/", "application/xml", bytes.NewReader(output))
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	defer resp.Body.Close()
 	scanner := bufio.NewScanner(resp.Body)
@@ -79,5 +89,4 @@ func main() {
 	for scanner.Scan() {
 		fmt.Print(scanner.Text())
 	}
-	//os.Stdout.Write(output)
 }
