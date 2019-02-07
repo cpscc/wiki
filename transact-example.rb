@@ -26,8 +26,8 @@ data = {
 usr  = "client_8rHPjmG9YWqKmSiPQkrd"
 pwd  = "key_qj9KUZJKIUcJSMIL3EHU16tmz"
 
-uri  	= URI.parse("https://api.cornerstone.cc/v1/transactions/")
-http 	= Net::HTTP.new(uri.host, uri.port)
+uri  = URI.parse("https://api.cornerstone.cc/v1/transactions/")
+http = Net::HTTP.new(uri.host, uri.port)
 
 http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
