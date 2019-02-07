@@ -30,11 +30,10 @@ class CornerstoneTransactionExample {
 		try {				
 			HttpURLConnection con = (HttpURLConnection) (new URL(url)).openConnection();
 			
-			byte[] message = (user+":"+key).getBytes("UTF-8");
-			String encoded = Base64.getEncoder().encodeToString(message);
+			String auth = Base64.getEncoder().encodeToString((user+":"+key).getBytes("UTF-8"));
 						
 			con.setRequestProperty("User-Agent", user);
-			con.setRequestProperty("Authorization", "Basic " + encoded);
+			con.setRequestProperty("Authorization", "Basic " + auth);
 			con.setRequestProperty("Accept", "application/xml");
 			con.setRequestProperty("Content-Type", "application/xml");
 
