@@ -3,9 +3,9 @@ package main
 import (
 	"bytes"
 	"encoding/xml"
-	"fmt"
+	"os"
 	"net/http"
-	"bufio"
+	"io"
 	"time"
 )
 
@@ -66,27 +66,17 @@ func main() {
 	user := "sandbox_3xSOjtxSvICXVOKYqbwI"
 	key  := "key_RdutJGqI50YIwjehGtHBOe1Uu"
 	
-	v := &Request{Amount: 15}
-	v.Customer = Customer{FirstName: "Robert", LastName: "Parr", Email: "robertp@example.com"}
-	v.Card = Card{Number: "4444333322221111", Expmonth: "12", Expyear: "23"}
-	reqBody := new(bytes.Buffer)
-	xml.NewEncoder(reqBody).Encode(v)
-	//fmt.Println(reqBody)
+	r := &Request{Amount: 15}
+	r.Customer = Customer{FirstName: "Robert", LastName: "Parr", Email: "robertp@example.com"}
+	r.Card = Card{Number: "4444333322221111", Expmonth: "12", Expyear: "23"}
+	b := new(bytes.Buffer)
+	xml.NewEncoder(b).Encode(r)
 
 	client := &http.Client{Timeout: time.Second * 30}	
-	req, _ := http.NewRequest("POST", url, reqBody)
+	req, _ := http.NewRequest("POST", url, b)
 	req.Header.Add("Content-Type", "application/xml")
 	req.SetBasicAuth(user,key)
+	resp, _ := client.Do(req)
 
-	resp, err := client.Do(req)
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	defer resp.Body.Close()
-	scanner := bufio.NewScanner(resp.Body)
-	scanner.Split(bufio.ScanBytes)
-	for scanner.Scan() {
-		fmt.Print(scanner.Text())
-	}
+	io.Copy(os.Stdout, resp.Body)
 }
