@@ -5,7 +5,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"net/http"
-	//"io"
+	"os"
 	"bufio"
 )
 
@@ -68,7 +68,7 @@ func main() {
 
 	output, _ := xml.MarshalIndent(v, "  ", "    ")
 
-	fmt.Print(output)
+	fmt.Fprintf(os.Stdout, bytes.NewReader(output))
 
 	client := &http.Client{}
 	resp, _ := client.Post("http://api.cornerstone.cc/v1/", "application/xml", bytes.NewReader(output))
