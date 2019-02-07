@@ -12,8 +12,8 @@ data = {
 		"card[cvv]" => "123"
 	   }
 
-usr  = "client_8rHPjmG9YWqKmSiPQkrd"
-pwd  = "key_qj9KUZJKIUcJSMIL3EHU16tmz"
+usr  = "sandbox_3xSOjtxSvICXVOKYqbwI"
+pwd  = "key_RdutJGqI50YIwjehGtHBOe1Uu"
 
 uri  = URI.parse("https://api.cornerstone.cc/v1/transactions/")
 http = Net::HTTP.new(uri.host, uri.port)
