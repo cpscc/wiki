@@ -26,8 +26,8 @@ $data = array(
 	   );
 
 $url     = "https://api.cornerstone.cc/v1/transactions";
-$id 	 = "id";
-$key 	 = "key";
+$id 	 = "sandbox_3xSOjtxSvICXVOKYqbwI";
+$key 	 = "key_RdutJGqI50YIwjehGtHBOe1Uu";
 $request = http_build_query($data);
 
 $ch = curl_init();
