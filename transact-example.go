@@ -1,13 +1,6 @@
 package main
 
-import (
-	"bytes"
-	"encoding/xml"
-	"os"
-	"net/http"
-	"io"
-	"time"
-)
+import ("bytes"; "encoding/xml"; "io"; "net/http"; "os"; "time")
 
 type Memo struct {
 	/* add your own custom properties here */
@@ -64,18 +57,18 @@ type Request struct {
 func main() {
 	url  := "http://api.cornerstone.cc/v1/"
 	user := "sandbox_3xSOjtxSvICXVOKYqbwI"
-	key  := "key_RdutJGqI50YIwjehGtHBOe1Uu"
-	
+	key := "key_RdutJGqI50YIwjehGtHBOe1Uu"
+
 	r := &Request{Amount: 15}
 	r.Customer = Customer{FirstName: "Robert", LastName: "Parr", Email: "robertp@example.com"}
 	r.Card = Card{Number: "4444333322221111", Expmonth: "12", Expyear: "23"}
 	b := new(bytes.Buffer)
 	xml.NewEncoder(b).Encode(r)
 
-	client := &http.Client{Timeout: time.Second * 30}	
+	client := &http.Client{Timeout: time.Second * 30}
 	req, _ := http.NewRequest("POST", url, b)
 	req.Header.Add("Content-Type", "application/xml")
-	req.SetBasicAuth(user,key)
+	req.SetBasicAuth(user, key)
 	resp, _ := client.Do(req)
 
 	io.Copy(os.Stdout, resp.Body)
