@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.util.Base64;
 
 class CornerstoneTransactionExample {
 	public static void main(String[] args) {
@@ -30,7 +31,7 @@ class CornerstoneTransactionExample {
 			HttpURLConnection con = (HttpURLConnection) (new URL(url)).openConnection();
 			
 			byte[] message = (user+":"+key).getBytes("UTF-8");
-			String encoded = javax.xml.bind.DatatypeConverter.printBase64Binary(message);
+			String encoded = Base64.getEncoder().encodeToString(message);
 						
 			con.setRequestProperty("User-Agent", user);
 			con.setRequestProperty("Authorization", "Basic " + encoded);
