@@ -1,0 +1,22 @@
+{
+  "name": "cornerstone-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "transact-example.node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cpscc/wiki.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cpscc/wiki/issues"
+  },
+  "homepage": "https://github.com/cpscc/wiki#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
