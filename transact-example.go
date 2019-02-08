@@ -1,13 +1,6 @@
 package main
 
-import (
-	"bytes"
-	"encoding/xml"
-	"fmt"
-	"net/http"
-	"os"
-	"bufio"
-)
+import ("bytes"; "encoding/xml"; "io"; "net/http"; "os"; "time")
 
 type Memo struct {
 	/* add your own custom properties here */
@@ -61,23 +54,25 @@ type Request struct {
 	Token     string `xml:"token,omitempty"`
 }
 
+// NOTE: the api can just as easily accept JSON,
+// just replace "xml" with "json" throughout this file
 func main() {
-	v := &Request{Amount: 15}
-	v.Customer = Customer{FirstName: "Robert", LastName: "Parr", Email: "robertp@example.com"}
-	v.Card = Card{Number: "4444333322221111", Expmonth: "12", Expyear: "23"}
+	url := "https://api.cornerstone.cc/v1/transactions"
+	user := "sandbox_3xSOjtxSvICXVOKYqbwI"
+	key := "key_RdutJGqI50YIwjehGtHBOe1Uu"
 
-	output, _ := xml.MarshalIndent(v, "  ", "    ")
+	r := &Request{Amount: 15}
+	r.Customer = Customer{FirstName: "Robert", LastName: "Parr", Email: "robertp@example.com"}
+	r.Card = Card{Number: "4444333322221111", Expmonth: "12", Expyear: "23"}
+	b := new(bytes.Buffer)
+	xml.NewEncoder(b).Encode(r)
 
-	fmt.Fprintf(os.Stdout, bytes.NewReader(output))
+	client := &http.Client{Timeout: time.Second * 30}
+	req, _ := http.NewRequest("POST", url, b)
+	req.Header.Add("Content-Type", "application/xml")
+	req.Header.Add("Accept", "application/xml")
+	req.SetBasicAuth(user, key)
+	resp, _ := client.Do(req)
 
-	client := &http.Client{}
-	resp, _ := client.Post("http://api.cornerstone.cc/v1/", "application/xml", bytes.NewReader(output))
-
-	defer resp.Body.Close()
-	scanner := bufio.NewScanner(resp.Body)
-	scanner.Split(bufio.ScanBytes)
-	for scanner.Scan() {
-		fmt.Print(scanner.Text())
-	}
-	//os.Stdout.Write(output)
+	io.Copy(os.Stdout, resp.Body)
 }
