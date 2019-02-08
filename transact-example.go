@@ -68,6 +68,7 @@ func main() {
 	client := &http.Client{Timeout: time.Second * 30}
 	req, _ := http.NewRequest("POST", url, b)
 	req.Header.Add("Content-Type", "application/xml")
+	req.Header.Add("Accept", "application/xml")
 	req.SetBasicAuth(user, key)
 	resp, _ := client.Do(req)
 
