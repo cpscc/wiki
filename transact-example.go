@@ -55,7 +55,7 @@ type Request struct {
 }
 
 func main() {
-	url  := "http://api.cornerstone.cc/v1/"
+	url := "https://api.cornerstone.cc/v1/transactions"
 	user := "sandbox_3xSOjtxSvICXVOKYqbwI"
 	key := "key_RdutJGqI50YIwjehGtHBOe1Uu"
 
