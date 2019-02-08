@@ -54,6 +54,8 @@ type Request struct {
 	Token     string `xml:"token,omitempty"`
 }
 
+// NOTE: the api can just as easily accept JSON,
+// just replace "xml" with "json" throughout this file
 func main() {
 	url := "https://api.cornerstone.cc/v1/transactions"
 	user := "sandbox_3xSOjtxSvICXVOKYqbwI"
