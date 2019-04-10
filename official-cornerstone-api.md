@@ -10,6 +10,7 @@ Introduction:
 - [Errors](#errors)
 - [Raw HTTP and cURL Examples](#raw-http-and-curl-examples)
 - [Language-Specific Examples](#language-specific-examples)
+- [Transaction IDs][#transaction-ids]
 
 Usage:
 
@@ -204,6 +205,11 @@ To get you started, we also have a few very simple transaction examples to get y
 - [Ruby](https://github.com/cpscc/wiki/blob/master/transact-example.rb)
 
 If your language is not here, let us know, as we may be working on an example for that language.
+
+
+## Transaction IDs
+
+There are two ID formats, depending on how your API client is configured behind the scenes. There is a numeric `id` and a `v2id` that also contains letters. They are used interchangeably in our system, and a transaction always ends up having a numeric ID under the hood, but you can also use the `v2id` in it’s place for lookup.
 
 
 # API Version
