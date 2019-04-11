@@ -70,7 +70,7 @@ With the [curl](http://curl.haxx.se/) utility, it looks something line this:
 
 For GET requests, all parameters not included in the resource path can be accessed as an HTTP query string parameter:
 
-    $ curl -i -u client_id:client_key "https://api.cornerstone.cc/v1/transactions?range=*&show_test"
+    $ curl -i -u client_id:client_key "https://api.cornerstone.cc/v1/transactions?range=2012/01/01-2012/01/15&show_test"
 
 Other requests are placed in the body of the request as POST parameters:
 
@@ -659,7 +659,7 @@ Fetch a list of transactions, according to a given filter.
 
 Name | Usage
 ----:| -----
-range          | Filters by date or date range. Format: `12/31/1999` or `01/31/1999-12/31/1999` (optional). If left empty, this turns into today's date. To get all transactions, enter `*`. Note that this is slow and it's recommended not to use in a production environment, and instead a range should be used.
+range          | Filters by date or date range. Format: `12/31/1999` or `01/31/1999-12/31/1999` (optional). If left empty, this turns into today's date. <!--To get all transactions, enter `*`. Note that this is slow and it's recommended not to use in a production environment, and instead a range should be used.-->
 amount         | Dollar amount. We try to determine what you mean automatically, so `13`, `13.00`, `$13`, and `13 dollars` all register as $13.00 USD. (optional)
 firstname      | Filter by customer's first name (optional)
 lastname       | Or customer's last name (optional)
