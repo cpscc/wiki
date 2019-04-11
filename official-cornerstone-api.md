@@ -10,7 +10,7 @@ Introduction:
 - [Errors](#errors)
 - [Raw HTTP and cURL Examples](#raw-http-and-curl-examples)
 - [Language-Specific Examples](#language-specific-examples)
-- [Transaction IDs][#transaction-ids]
+- [Transaction IDs](#transaction-ids)
 
 Usage:
 
