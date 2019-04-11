@@ -197,7 +197,7 @@ Content-Type: application/json
 
 To get you started, we also have a few very simple transaction examples to get you started:
 
-- [C Sharp](https://github.com/cpscc/wiki/blob/master/transact-example.cs)
+- [C Sharp](https://github.com/cpscc/wiki/blob/master/transact-example.cs) (or [Using Newtonsoft.Json](https://github.com/cpscc/wiki/blob/master/transact-example-json.cs))
 - [Java](https://github.com/cpscc/wiki/blob/master/transact-example.java)
 - [PHP](https://github.com/cpscc/wiki/blob/master/transact-example.php)
 - [Python 2](https://github.com/cpscc/wiki/blob/master/transact-example-python2.py)
