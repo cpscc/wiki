@@ -1,4 +1,4 @@
-h1. Solidstone Checkout API
+h1. Cornerstone Checkout API
 
 *Contents*
 
