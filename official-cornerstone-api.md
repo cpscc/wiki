@@ -20,7 +20,7 @@ Usage:
 - [Refund Transactions](#refund-transactions)
 - [Unlinked Credit (not always available)](#unlinked-credit)
 - [Update Schedules](#update-schedule)
-- [Payment Information Vault](#payment-information-vault)
+- [Payment Information Vault (to tokenize payment information)](#payment-information-vault)
 - [Merchant Application Status](#merchant-applications-status)
 - [Tenants (Customers)](#tenants)
 
@@ -607,7 +607,7 @@ memo[] | (optional) Used to update Memo field for Transaction.
 
     POST https://api.cornerstone.cc/v1/transactions
 
-Store payment information securely in a vault without making a charge or authorization to the payment method.
+Store payment information securely in a vault without making a charge or authorization to the payment method, creating a `token` id. This is also often referred to as "tokenizing" a card or other payment information.
 
 To use the vault, add the “vault” field to a normal transaction request. When “vault” is present, the amount is no longer required, and if included, will be ignored. As long as the payment information is valid, you will receive an “approved” or “accepted” status.
 
