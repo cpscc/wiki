@@ -12,7 +12,7 @@ h1. Cornerstone Checkout API
 # "Simple shopping cart":#simple-cart-via-items
 # "Callback / Redirect URL":#callback--redirect
 
-*Note:* The Solidstone page used as an example in this document will be @Machine_Shop@. Requests are usually HTTP POST requests, although on occasion GET elements are included.
+*Note:* The Cornerstone page used as an example in this document will be @Machine_Shop@. Requests are usually HTTP POST requests, although on occasion GET elements are included.
 
 h1. Overview
 
