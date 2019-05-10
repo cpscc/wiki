@@ -577,13 +577,15 @@ Update scheduled transaction information to be processed at a future date.
 
 To update the transaction you must refer to a certain transaction ID.  These ID's are returned when a schedule is made or you can fetch the transaction ID's using the [Fetch Transactions](#fetch-transactions) functionality.  If card of check information is passed it will return the updated token related to the transaction.  You made do a simple update without any card or check information such as adjusting the amount, token, cycle, startdate, or nextdate of a transaction.
 
+To cancel a schedule, send the value `once` in the `cycle` field.
+
 ### Parameters
 
 Name | Usage
 ---- | -----
 id | The ID of the transaction you would like to update. If the transaction cannot be found, or you do not have access, a "not_found" error will be returned.
 amount | Amount in US dollars. We try to determine what you mean automatically, so `13`, `13.00`, `$13`, and `13 dollars` all register as $13.00 USD.
-cycle | (optional) Allows you to specify a recurring cycle. Values available: `once` (default), `weekly`, `monthly`, `quarterly`, or `yearly`.
+cycle | (optional) Allows you to specify a recurring cycle. Values available: `once` (send this to cancel the transaction), `weekly`, `monthly`, `quarterly`, or `yearly`.
 nextdate | (optional) Used to schedule the next date a transaction will occur. Must be formatted: `mm/dd/yyyy`
 startdate | (optional) Used to schedule first occurence of transaction if none have occured. Must be formatted: `mm/dd/yyyy`
 token | (optional) Used to update the payment token for a transaction.  Payment tokens are returned when a recurring transaction is created or future payment scheduled.
