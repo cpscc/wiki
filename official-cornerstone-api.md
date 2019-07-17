@@ -675,7 +675,7 @@ show_test      | Display test transactions (optional)
 trans_id       | Fetch a transaction by ID (optional)
 request_id     | Fetch a transaction by `request_id` (optional
 custom[]<br>memo[] | Filter by any custom (as sent in **`memo[]`** in a transaction POST) fields that may be present on the transaction (optional)
-include_gid    | Include the transaction ID in the backend gateway with the response (optional)
+include_gid    | Include the transaction ID from the backend gateway with the response (optional)
 page_size      | Request a certain number of transactions (default: 10)
 page           | Which page number you would like to view (default: 1)
 
