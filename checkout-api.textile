@@ -290,5 +290,15 @@ startdate
 nextdate
 previousid
 occurrence
+test
+hooks
+token
+gw_token
+gw_id
+gw_reason
+cvv_match
+avs_match
+authcode
+memo
 memo.NAME
 </code></pre>
