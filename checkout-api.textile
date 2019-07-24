@@ -268,3 +268,26 @@ to your request, and include the name you would like for the return parameter in
 <input type=hidden name=callback_field[status] value=status>
 <input type=hidden name=callback_field[message] value=msg>
 </code></pre>
+
+If you would like to pass back additional fields, you can also specify these using the @callback_data@ with the field you want as the sub-parameter:
+
+<pre><code><input type=hidden name=callback_data[paymentid] value=1>
+<input type=hidden name=callback_data[memo.custom_value] value=1>
+</code></pre>
+
+These are the additional fields you can specify (for approved transactions @status@, @id@, @amount@, @reason@, and @token@ are already included):
+
+<pre><code>date
+reason
+user_reason
+paymentid
+name
+merchant
+amount
+frequency
+startdate
+nextdate
+previousid
+occurrence
+memo.NAME
+</code></pre>
