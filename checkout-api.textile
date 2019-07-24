@@ -259,7 +259,8 @@ the status of the transaction (approved or declined), and if the transaction was
 a message containing the reason for a decline.
 
 <pre><code>ON APPROVAL: https://example.com/return_transaction?token=438271&trans_id=123&status=Approved&amount=2.00
-ON DECLINE: https://example.com/return_transaction?token=438271&status=Declined&msg=Invalid%20card%20number</code></pre>
+ON DECLINE: https://example.com/return_transaction?token=438271&status=Declined&msg=Invalid%20card%20number
+</code></pre>
 
 If you need to customize the name of the return parameters, you can add the following parameters
 to your request, and include the name you would like for the return parameter in the value of each one:
