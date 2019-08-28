@@ -609,9 +609,9 @@ memo[] | (optional) Used to update Memo field for Transaction.
 
     POST https://api.cornerstone.cc/v1/transactions
 
-Store payment information securely in a vault without making a charge or authorization to the payment method, creating a `token` id. This is also often referred to as "tokenizing" a card or other payment information.
+By default, for all transaction and schedule requests the payment is tokenized and stored in our vault, and a token will be returned. However, if you want to simply store a payment method without scheduling or charging anything, this is the request you want.
 
-To use the vault, add the “vault” field to a normal transaction request. When “vault” is present, the amount is no longer required, and if included, will be ignored. As long as the payment information is valid, you will receive an “approved” or “accepted” status.
+To use the vault, add the “vault” field to a normal transaction request. When “vault” is present, the amount is no longer required, and if included, will be ignored. No schedule will be created and no payment will be authorized if “vault” is present. As long as the payment information is valid, you will receive an “approved” or “accepted” status.
 
 ### Examples 
 
