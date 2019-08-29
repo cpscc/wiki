@@ -28,7 +28,7 @@ h3. Stage 1
 |_. Name    |_. Description |_. Required? |
 | amount    | US Dollar amount for the transaction | Required |
 | merchant  | Merchant name | Only required if different than the merchant/site name given in the URL |
-| recurring | Can be @once@, @weekly@, @monthly@, @quarterly@, and @yearly@ | |
+| recurring | Can be @once@, @weekly@, @biweekly@, @monthly@, @bimonthly@, @quarterly@, @semiannual@, @annual@, and @biannual@ | |
 | startdate | A date in the format @mm/dd/yyyy@. If the day is higher than 30 it is changed to 30. | |
 | installments | Number of installments to complete before cancelling the transaction. If set to 0, runs until manually cancelled. | |
 | type      | Transaction type. Not used for simple transactions. | |
