@@ -263,6 +263,7 @@ amount | **String** Amount in US dollars. We try to determine what you mean auto
 merchant | (optional) **String** If the transaction is being charged to another merchant or a sub-account, it is specified here as a string.
 recurring | (optional) **String** Allows you to specify a recurring cycle. Values available: `once` (default), `weekly`, `monthly`, `quarterly`, or `yearly`. Without `startdate` set, all monthly transactions made on the 13th will fall on the 13th of the next month, and so on.
 start-date | (optional) **String** Used to schedule a transaction in the future. Must be formatted: `mm/dd/yyyy`, e.g. `12/31/1999`. If the day of the month is above 30 (as it is in our example), it is silently shifted down to 30.
+installments | (optional) **Numeric** Specify the number of installments before cancelling recurring. `0` (default) designates to continue until cancellation. For example, if you would like a monthly schedule to continue for one year, use `12` to designate 12 months.
 memo | (optional) **String** Any string of text for reporting.
 memo[] | (optional) **Array** Instead of a string, the memo can be split into an array , for example `memo[shoe_size]=12&memo[shoe_color]=red`.
 vault | **Boolean** Vault the payment info -- this results in a 0 transaction record, where no authorization or capture has been made on for the payment
