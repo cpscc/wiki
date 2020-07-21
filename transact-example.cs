@@ -13,6 +13,8 @@ namespace CornerstoneTransactExample
 			string user  = "sandbox_3xSOjtxSvICXVOKYqbwI";
 			string key   = "key_RdutJGqI50YIwjehGtHBOe1Uu";
 
+			// you will probably want to create this xml
+			// string using a library or class
 			var postData =
 				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
 				"<request>" +
