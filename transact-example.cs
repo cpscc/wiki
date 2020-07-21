@@ -33,13 +33,16 @@ namespace CornerstoneTransactExample
 				"</request>";
 			var data = Encoding.ASCII.GetBytes(postData);
 
-			// Create Request and set Proper Credentials etc.
+			string authInfo = user + ":" + key;
+			authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
+
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 			request.Method        = "POST";
 			request.ContentType   = "application/xml";
 			request.Accept        = "application/xml";
 			request.ContentLength = data.Length;
-			SetBasicAuth(request, user, key);
+
+			request.Headers["Authorization"] = "Basic " + authInfo;
 
 			using (var stream = request.GetRequestStream())
 			{
@@ -64,20 +67,6 @@ namespace CornerstoneTransactExample
 					response.Close();
 				}
 			}
-		}
-
-		/* Sets our basic auth credentials
-		*
-		*  @params
-		*   WebRequest request   our webrequest object
-		*   String     user      our username
-		*   String     key       our key for auth
-		*/
-		static void SetBasicAuth(WebRequest request, String user, String key)
-		{
-			string authInfo = user + ":" + key;
-			authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
-			request.Headers["Authorization"] = "Basic " + authInfo;
 		}
 	}
 }
