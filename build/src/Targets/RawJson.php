@@ -1,13 +1,14 @@
 <?php
 namespace Cornerstone\Quarry\Targets;
 
-class RawForm extends Raw
+class RawJson extends Raw
 {
-    const name = "raw.x-www-form-urlencoded";
-    const ctype = "application/x-www-form-urlencoded";
+    const name = "raw.json";
+    const ctype = "application/json";
 
     function convert(array $spec, array $config, $h)
     {
         parent::convert($spec, $config, $h);
     }
 }
+
