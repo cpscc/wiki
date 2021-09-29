@@ -300,5 +300,6 @@ cvv_match
 avs_match
 authcode
 memo
-memo.NAME
+memo.FIELD_NAME
+customer.FIELD_NAME
 </code></pre>
