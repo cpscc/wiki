@@ -1,6 +1,6 @@
 ## Verifying Responses
 
-You will want to verify that a visit to your webhook url is not a spoof, but truly from us.
+You will want to verify that a visit to your webhook url is not a spoof, but truly from us. To do this, we authenticate with you using a key that we share, which is combined with other data (a payload send time, a random number used only once (or "nonce"), and the payload itself) and hashed using the `md5` algorithm. This is called an HMAC, or Hash-Based Message Authentication Code. Your language should include the tools to do this out of the box.
 
 Our HMACs are made up of a timestamp (Unix-style), nonce, and we use md5 as the algorithm. You would just parse the Authorization header to get the timestamp and nonce, and signature, and create a new signature to compare with the one sent.
 
