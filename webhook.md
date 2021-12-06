@@ -12,7 +12,7 @@ You will also receive a key from us when the webhook is set up, so that you can 
 
 ## Testing Your Webhook
 
-Once it's set up on our end, just make sure your webhook url can receive data, and then use your payment sandbox to start sending tests to your webhook. You can also mock requests to the webhook url, but make sure before you go live that it's been tested against the sandbox.
+Once it's set up on our end, just make sure your webhook url can receive data, and then use your payment sandbox to start sending tests to your webhook. You can also mock requests to the webhook url, but make sure before you go live that it's been tested against the sandbox. The best way to test the fields you recieve is to make test transactions of varying types, as the specific data that is returned is tailored what you requested at setup.
 
 ## Verifying Responses
 
