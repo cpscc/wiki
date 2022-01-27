@@ -14,21 +14,21 @@ You will also receive a key from us when the webhook is set up, so that you can 
 
 Once it's set up on our end, just make sure your webhook url can receive data, and then use your payment sandbox to start sending tests to your webhook. You can also mock requests to the webhook url, but make sure before you go live that it's been tested against the sandbox. The best way to test the fields you recieve is to make test transactions of varying types, as the specific data that is returned is tailored what you requested at setup.
 
-## Verifying Responses
+## Verifying Payload
 
 You will want to verify that a visit to your webhook url is not a spoof, but truly from us. To do this, we authenticate with you using a key that we share, which is combined with other data (a payload send time, a random number used only once (or "nonce"), and the payload itself) and hashed using the `md5` algorithm. This is called an [HMAC](https://en.wikipedia.org/wiki/HMAC), or Hash-Based Message Authentication Code. Your language should include the tools to handle this out of the box. The Wikipedia article on HMAC also describes this accurately.
 
-Our HMACs are made up of a timestamp (Unix-style), nonce, and currently we allow only md5 as the algorithm. You would just parse the Authorization header to get the timestamp and nonce, and signature, and create a new signature to compare with the one sent.
+Our HMACs are made up of a timestamp (Unix-style), nonce, and the POST body and currently we allow sha256 as the algorithm. You just parse the Authorization header to get the timestamp, nonce, and signature, and create a new signature to compare with the one sent. We concatenate the timestamp, nonce, and body together, then hash them, to create the HMAC.
 
 ```php
 $ts = time();
 $nonce = rand();
-$hmac = hash_hmac($algo = 'md5', $body, $key); // json $body assumed
+$hmac = hash_hmac($algo = 'sha256', $ts . $nonce . $body, $key)
 
 // Authorization: hmac ts=$ts nonce=$nonce algorithm=$algo signature=$hmac
 ```
 
-Here is a concrete example, given the following body you would have this Authorization header:
+## Example
 
 ```
 Authorization: hmac ts=1620932376 nonce=42295527 algorithm=md5 signature=d2f22bd1d91b072a3ecfefa164c04a58
