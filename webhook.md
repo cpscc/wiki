@@ -22,7 +22,7 @@ Our HMACs are made up of a timestamp (Unix-style), nonce, and the POST body and 
 
 ```php
 $ts = time();
-$nonce = rand();
+$nonce = random_int();
 $hmac = hash_hmac($algo = 'sha256', $ts . $nonce . $body, $key)
 
 // Authorization: hmac ts=$ts nonce=$nonce algorithm=$algo signature=$hmac
@@ -31,7 +31,7 @@ $hmac = hash_hmac($algo = 'sha256', $ts . $nonce . $body, $key)
 ## Example
 
 ```
-Authorization: hmac ts=1620932376 nonce=42295527 algorithm=md5 signature=d2f22bd1d91b072a3ecfefa164c04a58
+Authorization: hmac ts=1620932376 nonce=42295527 algorithm=sha256 signature=8b0c2b6c223ca052f4c75ca0c2aa23ffce6adadd2bdeb5b494ed14be0518f6d1
 ```
 
 ```json
